@@ -1,0 +1,7 @@
+html{height:100%;}
+div,header,body,p,li,a,img,h1,h2,h3,h4,h5,h6,dl,dd,dt,label,input,textarea{margin:0;padding:0;}
+ul,ol{margin:0;padding:0;list-style: none;}
+a{text-decoration: none;color:black;}
+.clearfix{}
+.clearfix:after{content:'';display:block;clear:both;}
+body{font: 0.6rem 'Hiragino Sans GB', 'Microsoft Yahei',\5b8b\4f53, Tahoma, Arial;}
