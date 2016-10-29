@@ -42,6 +42,9 @@
 .comment-text{-webkit-box-sizing: border-box;box-sizing: border-box;width:100%;padding:0 2rem 0 2.3rem;line-height: 1rem;font-size:0.6rem;text-align: left;}
 .comment-reply{}
 .reply-user{color:#7492c3;}
+.sound-comment{height:1.8rem;width:12rem;background:url(../img/comment_bg.png) no-repeat;background-size:100% 100%;margin:0.5rem 0 1rem 0;position: relative;}
+.sound-sign{}
+
 .comment-line{width:12.3rem;border-bottom:1px solid #d8d8d8;padding-top:0.5rem;margin-left:2rem;}
 .get-all-comment-btn{display:block;width:100%;line-height:2rem;text-align: center;background:#000 url("../img/comment-icon.png") no-repeat 1.6rem center;background-size:0.7rem;color:#fff;font-size:0.6rem;border-radius: 0.2rem;letter-spacing: 1px;}
 
