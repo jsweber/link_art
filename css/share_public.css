@@ -14,13 +14,13 @@
 .user-tag .date{float:right;line-height: 1rem;}
 
 /*昵称包裹效果*/
-.page-header .nick-wrapper{height:1.28rem;padding:0 0.32rem;position: relative;display: inline-block;line-height: 1.28rem;}
+.page-header .nick-wrapper{height:1.28rem;padding:0 0.32rem;position: relative;display: inline-block;line-height: 1.28rem;margin-top:0.7rem;}
 .page-header .nick-wrapper:before{content:"";width:0.32rem;height:1.28rem;background:url("../img/nick_left.png") no-repeat left bottom;background-size:100%;position: absolute;left:0;top:0;}
 .page-header .nick-wrapper:after{content:"";width:0.32rem;height:1.28rem;background:url("../img/nick_right.png") no-repeat left top;background-size:100%;position: absolute;right:0;top:0;}
 
 .font-bigger{font-size:0.9rem;font-weight: bold;}
 
-.page-body{width:100%;position: relative;}
+.page-body{width:100%;position: relative;,margin-top:0.3rem;}
 .act-poster{display: block;width:100%;}
 
 .details-wrapper{width:100%;}
@@ -36,8 +36,8 @@
 .comment-list .comment-wrapper{width:100%;margin-bottom:0.3rem;}
 .comment-user-info{width:100%;height:2.3rem; -webkit-box-sizing: border-box;box-sizing: border-box;padding-top:0.3rem;}
 .comment-header-img{width:2rem;height:2rem;float:left;}
-.comment-user-name{width:4rem;float:left;font-size:0.6rem;font-weight: bold;line-height: 2rem;margin-left:0.5rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
-.comment-time{width:7rem;float:right;line-height: 2rem;text-align: right}
+.comment-user-name{width:4rem;float:left;font-size:0.6rem;font-weight: bold;line-height: 2rem;height:2rem;margin-left:0.5rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.comment-time{width:7.6rem;float:right;line-height: 2rem;height: 2rem;text-align: right}
 .comment-time span{}
 .comment-text{-webkit-box-sizing: border-box;box-sizing: border-box;width:100%;padding:0 2rem 0 2.3rem;line-height: 1rem;font-size:0.6rem;text-align: left;}
 .comment-reply{}

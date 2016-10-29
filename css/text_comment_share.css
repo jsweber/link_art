@@ -1,0 +1,12 @@
+.text{width:100%;background:#fff;}
+.signup{display: block;background:#fcdc46;font-size: 0.8rem;width:3.4rem;height:1.66rem;line-height: 1.66rem;text-align: center;margin-top:0.7rem;}
+.text .comment-wrapper{background:#f0f0f0;}
+.text .comment-wrapper .comment-header-img{width:1.4rem;height:1.4rem;margin-left:0.6rem;margin-top:0.3rem;}
+#my-comment{background:#fff;}
+#my-comment .comment-header-img{width:2rem;height:2rem;margin-left:0rem;margin-top:0rem;}
+#my-comment .comment-user-name{line-height: 1rem;}
+#my-comment .comment-user-name .share-date{font-size:0.5rem;color:#7b7b7b;}
+#my-comment .comment-time{line-height: 1.2rem;width:8rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+#my-comment .comment-time img{width:0.6rem;vertical-align: sub;}
+#my-comment .comment-time span{display:inline-block;line-height: 1rem;padding:0 0.4rem 0 0.2rem;}
+
