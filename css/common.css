@@ -4,4 +4,4 @@ ul,ol{margin:0;padding:0;list-style: none;}
 a{text-decoration: none;color:black;}
 .clearfix{}
 .clearfix:after{content:'';display:block;clear:both;}
-body{font: 0.6rem 'Hiragino Sans GB', 'Microsoft Yahei',\5b8b\4f53, Tahoma, Arial;}
+body{font: 0.5rem 'Hiragino Sans GB', 'Microsoft Yahei',\5b8b\4f53, Tahoma, Arial;}

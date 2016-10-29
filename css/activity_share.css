@@ -1,11 +1,3 @@
 .activity{width:100%;background:#fff;}
-.page-header{width:100%;height:6.6rem;position:relative;}
-.page-header .logo{width:3.65rem;height:1rem;display:block;}
-
-/*昵称包裹效果*/
-.page-header .nick-wrapper{height:1.28rem;padding:0 0.32rem;position: relative;display: inline-block;line-height: 1.28rem;}
-.page-header .nick-wrapper:before{content:"";width:0.32rem;height:1.28rem;background:url("../img/nick_left.png") no-repeat left bottom;background-size:100%;position: absolute;left:0;top:0;}
-.page-header .nick-wrapper:after{content:"";width:0.32rem;height:1.28rem;background:url("../img/nick_right.png") no-repeat left top;background-size:100%;position: absolute;right:0;top:0;}
-
-.font-bigger{font-size:0.9rem;font-weight: bold;}
+.signup{display: block;background:#fcdc46;font-size: 0.8rem;width:3.4rem;height:1.66rem;line-height: 1.66rem;text-align: center;margin-top:0.7rem;}
 

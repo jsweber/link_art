@@ -1,0 +1,53 @@
+.container{padding:0 0.6rem;-webkit-box-sizing: border-box;box-sizing: border-box;}
+
+
+.page-header{width:100%;height:6.6rem;position:relative;-webkit-box-sizing: border-box;box-sizing: border-box;padding-top:1rem;}
+.page-header .logo{width:3.62rem;display:block;}
+.act-name{margin-top:0.7rem;}
+.user-info-wrapper{width:100%;height:2rem;margin-top:0.5rem;}
+.user-info-wrapper .header-img{width:2rem;height:2rem;display: inline-block;float:left;}
+.user-info-wrapper .header-img img{width:100%;height:100%;}
+.user-info-wrapper .user-info{display:inline-block;height:2rem;width:12.3rem;float:right;}
+.user-name{height:1rem;line-height: 1rem;}
+.user-tag{height:1rem;}
+.user-tag span{display: inline-block;line-height: 1rem;}
+.user-tag .date{float:right;line-height: 1rem;}
+
+/*昵称包裹效果*/
+.page-header .nick-wrapper{height:1.28rem;padding:0 0.32rem;position: relative;display: inline-block;line-height: 1.28rem;}
+.page-header .nick-wrapper:before{content:"";width:0.32rem;height:1.28rem;background:url("../img/nick_left.png") no-repeat left bottom;background-size:100%;position: absolute;left:0;top:0;}
+.page-header .nick-wrapper:after{content:"";width:0.32rem;height:1.28rem;background:url("../img/nick_right.png") no-repeat left top;background-size:100%;position: absolute;right:0;top:0;}
+
+.font-bigger{font-size:0.9rem;font-weight: bold;}
+
+.page-body{width:100%;position: relative;}
+.act-poster{display: block;width:100%;}
+
+.details-wrapper{width:100%;}
+.details-wrapper .details-slider{margin-top:1rem;}
+.details-slider .slider-title{height:1.2rem;-webkit-box-sizing: border-box;box-sizing: border-box;border-left:0.2rem solid #fcdc46;font-size: 0.8rem;text-indent: 0.5rem;line-height: 1.2rem;}
+.one-info{height:1.1rem;}
+.one-info .info-title,.one-info .info-content{font-size:0.56rem;line-height: 1.1rem;}
+.one-info .info-title{float:left;color:#7b7b7b;}
+.one-info .info-content{float:right;color:#000;font-weight: bold;}
+.text-content{font-size: 0.5rem;line-height: 0.8rem;color:#000;text-align: justify;margin-top:0.4rem;}
+
+.comment-list{width:100%;}
+.comment-list .comment-wrapper{width:100%;margin-bottom:0.3rem;}
+.comment-user-info{width:100%;height:2.3rem; -webkit-box-sizing: border-box;box-sizing: border-box;padding-top:0.3rem;}
+.comment-header-img{width:2rem;height:2rem;float:left;}
+.comment-user-name{width:4rem;float:left;font-size:0.6rem;font-weight: bold;line-height: 2rem;margin-left:0.5rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.comment-time{width:7rem;float:right;line-height: 2rem;text-align: right}
+.comment-time span{}
+.comment-text{-webkit-box-sizing: border-box;box-sizing: border-box;width:100%;padding:0 2rem 0 2.3rem;line-height: 1rem;font-size:0.6rem;text-align: left;}
+.comment-reply{}
+.reply-user{color:#7492c3;}
+.comment-line{width:12.3rem;border-bottom:1px solid #d8d8d8;padding-top:0.5rem;margin-left:2rem;}
+.get-all-comment-btn{display:block;width:100%;line-height:2rem;text-align: center;background:#000 url("../img/comment-icon.png") no-repeat 1.6rem center;background-size:0.7rem;color:#fff;font-size:0.6rem;border-radius: 0.2rem;letter-spacing: 1px;}
+
+.page-footer{width:12.8rem;height:11.5rem;border:1px solid #eaeaeb;margin:0.6rem auto 0;overflow: hidden;}
+.page-footer .qrcode{width:6.4rem;margin:0.9rem auto 0;display: block;}
+.page-footer .compay-name{font-size:0.8rem;text-align: center;margin-top:1.2rem;font-weight: bold;}
+.page-footer .focus-text{text-align: center;margin-top:0.5rem;color:#7b7b7b;}
+
+.line{width:100%;border-bottom:1px solid #d8d8d8;margin-top:0.3rem;letter-spacing: 1px;}
