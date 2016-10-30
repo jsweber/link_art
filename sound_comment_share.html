@@ -89,11 +89,31 @@
                         <div class="comment-text">
                             <div class="sound-comment">
                                 <div class="sound-sign">
-                                    <div class="sound-time">12''</div>
+                                    <div class="sound-time"><span class="time-panel">0</span>''</div>
                                     <div class="sound-img">
-                                        
+                                        <img src="img/audio_play_icon.png">
                                     </div>
                                 </div>
+                                <audio src="img/test_muisc.mp3" class="music" preload></audio>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="comment-wrapper">
+                        <div class="comment-user-info">
+                            <img src="img/user_header.png"  class="comment-header-img">
+                            <span class="comment-user-name">ASAS</span>
+                        </div>
+
+                        <div class="comment-text">
+                            <div class="sound-comment">
+                                <div class="sound-sign">
+                                    <div class="sound-time"><span class="time-panel">0</span>''</div>
+                                    <div class="sound-img">
+                                        <img src="img/audio_play_icon.png">
+                                    </div>
+                                </div>
+                                <audio src="img/test_muisc.mp3" class="music" preload></audio>
                             </div>
                         </div>
                     </li>
@@ -126,20 +146,18 @@
         <p class="compay-name">LinkArt</p>
         <p class="focus-text">扫一扫或长按二维码，加关注</p>
     </footer>
-
-
-
-
-
-
 </section>
-
-
-
 </body>
 <!-- build:js js/activity_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
+<script src="js/audioPlay.js"></script>
 <!-- endbuild -->
 <script>
+    window.addEventListener("load",function(){
+        var audiosParent = document.querySelectorAll(".sound-comment");
+        [].forEach.call(audiosParent,function(ap){
+            new AudioPlay(ap);
+        });
+    },false);
 </script>
 </html>
