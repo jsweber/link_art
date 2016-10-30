@@ -103,40 +103,34 @@
         <p class="focus-text">扫一扫或长按二维码，加关注</p>
     </footer>
 
-
-
 </section>
-
-
-
 </body>
 <!-- build:js js/activity_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
-<!-- endbuild -->
 <script>
 
-    $(function() {
+    function setActivityAttributes(activity) {
+        var comments = activity.comments;
+        for(var i = 0; i < comments.length; i++){
+            var comment = comments[i];
+            comment.time = getDateDiff(comment.created_at);
+            var res = /^回复@(.*):/.exec(comment.content);
+            comment.reply_to = res == null ? null : res[1];
+            if (res !== null)
+                comment.content = comment.content.substr(res[0].length);
 
-        function setActivityAttributes(activity) {
-            var comments = activity.comments;
-            for(var i = 0; i < comments.length; i++){
-                var comment = comments[i];
-                comment.time = getDateDiff(comment.created_at);
-                var res = /^回复@(.*):/.exec(comment.content);
-                comment.reply_to = res == null ? null : res[1];
-                if (res !== null)
-                    comment.content = comment.content.substr(res[0].length);
-
-            }
-
-            var update_at_str = takeTimeApart(activity.update_at);
-            activity.update_at =  update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
-
-            var end_str = takeTimeApart(activity.end);
-            activity.end = end_str.year + "年" + end_str.month + "月" + end_str.day + "日";
-
-            return activity;
         }
+
+        var update_at_str = takeTimeApart(activity.update_at);
+        activity.update_at =  update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
+
+        var end_str = takeTimeApart(activity.end);
+        activity.end = end_str.year + "年" + end_str.month + "月" + end_str.day + "日";
+
+        return activity;
+    }
+
+    $(function() {
 
         var vm = new Vue({
             el: 'body',
@@ -166,13 +160,12 @@
                                 "\"type\":\"audio\",\"created_at\":\"2015-08-05T08:40:51.620Z\",\"user\":{\"name\":\"安东\",\"avatar\":\"img\/user_header.png\"}}]}";
                         vm.activity = setActivityAttributes(JSON.parse(sample_activity));
 
-
                     },
                     error : function(XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest)
-                        console.log(textStatus)
-                        console.log(errorThrown)
-                        alert("异常！");
+                        console.log(XMLHttpRequest);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+//                        alert("异常！");
                     }
                 });
 
@@ -182,4 +175,6 @@
     })
 
 </script>
+<!-- endbuild -->
+
 </html>

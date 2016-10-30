@@ -14,27 +14,93 @@
     <!-- 开发完成后请使用min版 -->
     <script src="js/vue.js"></script>
 </head>
-<body>
+<body class="container">
 <section class="activity">
     <header class="page-header">
-        <img src="" class="logo">
-        <div class="nick-wrapper font-bigger">一阵xxxxx风</div>
+        <img src="img/logo.png" class="logo">
+        <div class="act-name font-bigger">{{activity.title}}</div>
+        <div class="user-info-wrapper">
+            <div class="header-img"><img v-bind:src="activity.user.avatar" alt=""></div>
+            <div class="user-info">
+                <div class="user-name">{{activity.user.name}}</div>
+                <div class="user-tag"><span>{{activity.user.bio}}</span><div class="date">{{activity.update_at}}</div></div>
+            </div>
+        </div>
     </header>
 
+    <div class="page-body">
+        <div>
+            <img v-bind:src="activity.cover" class="act-poster">
+        </div>
 
+        <ul class="details-wrapper">
+            <li class="details-slider">
+                <div class="slider-title">活动详情</div>
+                <div class="line"></div>
+                <div class="one-info">
+                    <span class="info-title">展会类型：</span>
+                    <span class="info-content">{{activity.type}}展</span>
+                </div>
+                <div class="one-info">
+                    <span class="info-title">展会地点：</span>
+                    <span class="info-content">{{activity.address}}</span>
+                </div>
+                <div class="one-info">
+                    <span class="info-title">报名截止时间：</span>
+                    <span class="info-content">{{activity.end}}</span>
+                </div>
+                <div class="one-info">
+                    <span class="info-title">联系电话：</span>
+                    <span class="info-content">{{activity.contact}}</span>
+                </div>
+            </li>
 
+            <li class="details-slider">
+                <div class="slider-title">活动介绍</div>
+                <div class="line"></div>
+                <div class="text-content">
+                    {{activity.desc}}
+                </div>
 
+            </li>
 
+            <li class="details-slider">
+                <div class="slider-title">报名条件</div>
+                <div class="line"></div>
+                <div class="text-content">
+                    {{activity.condition}}
+                </div>
+                <a href="javascript:;" class="signup">报名</a>
+            </li>
+
+            <li class="details-slider">
+                <div class="slider-title">评论</div>
+                <div class="line"></div>
+                <ul class="comment-list">
+                    <li v-for="comment in activity.comments" class="comment-wrapper">
+                        <div class="comment-user-info">
+                            <img v-bind:src="comment.user.avatar" alt="" class="comment-header-img">
+                            <span class="comment-user-name">{{comment.user.name}}</span>
+                            <div class="comment-time"><span>{{comment.time}}</span></div>
+                        </div>
+
+                        <div class="comment-text"><span v-if="comment.reply_to != null">回复<a href="javascript:;" class="reply-user">@{{comment.reply_to}}：</a> </span>  {{comment.content}}</div>
+                    </li>
+
+                </ul>
+                <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+            </li>
+        </ul>
+    </div>
+
+    <footer class="page-footer">
+        <img src="img/qrcode.jpg" class="qrcode">
+        <p class="compay-name">LinkArt</p>
+        <p class="focus-text">扫一扫或长按二维码，加关注</p>
+    </footer>
 
 </section>
-
-
-
 </body>
 <script src="js/activity_share.js"></script>
-<script>
 
-
-
-</script>
 </html>
