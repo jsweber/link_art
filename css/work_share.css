@@ -1,0 +1,6 @@
+.works{width:100%;}
+.works .comment-time{line-height: 1.2rem;width:8rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.works .comment-user-name{line-height: 1rem;}
+.works .comment-user-name .share-date{font-size: 0.5rem;color: #7b7b7b;}
+.works .comment-time img{width: 0.6rem;vertical-align: sub;}
+.works .comment-time span{display: inline-block;line-height: 1rem;padding: 0 0.4rem 0 0.2rem;}
