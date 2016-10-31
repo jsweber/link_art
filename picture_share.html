@@ -61,19 +61,13 @@
                 jQuery.support.cors = true;
                 $.ajax( {
                     url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/activities／1',
-                    data:{
-
-                    },
-                    contenttype :"application/x-www-form-urlencoded;charset=utf-8",
+                    data:{},
                     type:'get',
                     async: true,
                     cache:false,
                     dataType:"text",
                     success:function(data) {
-
-                        data = JSON.parse("{\"urls\": [         {             \"url\": \"img/pic1.png\"         },         {             \"url\": \"img/pic2.png\"         },         {             \"url\": \"img/pic3.png\"         }     ] }");
-                        vm.urls = data.urls;
-
+                        vm.urls = [{"url": "img/pic1.png"}, { "url": "img/pic2.png" }, {"url": "img/pic3.png" }];
                     },
                     error : function(XMLHttpRequest, textStatus, errorThrown) {
                         console.log(XMLHttpRequest);
@@ -82,7 +76,6 @@
                         alert("异常！");
                     }
                 });
-
 
             }
         });

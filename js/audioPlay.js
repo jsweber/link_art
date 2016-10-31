@@ -15,6 +15,7 @@ window.addEventListener("load",function(){
 *
 * */
 function AudioPlay(obj){
+    console.log(obj)
     this.audio = obj.getElementsByTagName("audio")[0];
     this.count = 0;
     this.time = 0;

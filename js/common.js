@@ -68,21 +68,41 @@ function query2obj(queryString) {
     return obj;
 }
 
-function getDateDiff(dateTimeStamp){
+// UTC时间格式：ISO 8601扩展格式为： YYYY-MM-DDTHH:mm:ss.sssZ
+// 这个是国际标准的时间格式
+function takeTimeApart(time){
+    var arr = time.split("T");
+    var date_str = arr[0].split("-");
+    var time_str = arr[1].split(":");
+    return {year: date_str[0], month: date_str[1], day: date_str[2],
+        hour: time_str[0], minute: time_str[1], second: time_str[2].substr(0,2)}
+}
+
+// 2014/05/08 00:22:11
+function getDateDiff(dateTime){
+    var time_part = takeTimeApart(dateTime);
+    var time_str = time_part.year + "-" + time_part.month + "-" + time_part.day + " " + time_part.hour + ":" + time_part.minute + ":" + time_part.second;
+    var dateTimeStamp = new Date(time_str).getTime();
+
     var minute = 1000 * 60;
     var hour = minute * 60;
     var day = hour * 24;
     var month = day * 30;
+    var year = month * 12;
     var now = new Date().getTime();
     var diffValue = now - dateTimeStamp;
     if ( diffValue < 0) { return; }
+    var yearC = diffValue / year;
     var monthC = diffValue / month;
     var weekC = diffValue / (7 * day);
     var dayC = diffValue / day;
     var hourC = diffValue / hour;
     var minC = diffValue / minute;
     var result = "";
-    if(monthC >= 1){
+    if(yearC >= 1){
+        result = parseInt(yearC) + "年前";
+    }
+    else if(monthC >= 1){
         result = parseInt(monthC) + "月前";
     }
     else if(weekC >= 1){
@@ -101,10 +121,3 @@ function getDateDiff(dateTimeStamp){
     return result;
 }
 
-function takeTimeApart(time){
-    var arr = time.split("T");
-    var date_str = arr[0].split("-");
-    var time_str = arr[1].split(":");
-    return {year: date_str[0], month: date_str[1], day: date_str[2],
-        hour: time_str[0], minute: time_str[1]}
-}

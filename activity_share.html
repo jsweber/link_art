@@ -88,7 +88,21 @@
                             <div class="comment-time"><span>{{comment.time}}</span></div>
                         </div>
 
-                        <div class="comment-text"><span v-if="comment.reply_to != null">回复<a href="javascript:;" class="reply-user">@{{comment.reply_to}}：</a> </span>  {{comment.content}}</div>
+                        <div v-if="comment.type=='text'" class="comment-text">
+                            <span v-if="comment.reply_to != null">回复<a href="javascript:;" class="reply-user">@{{comment.reply_to}}：</a> </span>  {{comment.content}}
+                        </div>
+                        <div v-if="comment.type=='audio'" class="comment-text">
+                            <div class="sound-comment">
+                                <div class="sound-sign">
+                                    <div class="sound-time"><span class="time-panel">0</span>''</div>
+                                    <div class="sound-img">
+                                        <img src="img/audio_play_icon.png">
+                                    </div>
+                                </div>
+                                <audio v-bind:src="comment.url" class="music" preload></audio>
+                            </div>
+                        </div>
+
                     </li>
 
                 </ul>
@@ -107,6 +121,7 @@
 </body>
 <!-- build:js js/activity_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
+<script src="js/audioPlay.js"></script>
 <script>
 
     function setActivityAttributes(activity) {
@@ -138,28 +153,21 @@
                 activity: {user:{}, comments: [{user:{}}]}
             },
             ready:function() {
-                jQuery.support.cors = true;
                 $.ajax( {
                     url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/activities／1',
-                    data:{
-
-                    },
-                    contenttype :"application/x-www-form-urlencoded;charset=utf-8",
+                    data:{},
                     type:'get',
                     async: true,
                     cache:false,
-                    dataType:"text",
+                    dataType:"json",
                     success:function(data) {
-                        var sample_activity = "{\"title\":\"中国国际青年艺术展\",\"cover\":\"img\/activity-pic.jpg\",\"user\":{\"name\":\"饶宇\"," +
-                                "\"bio\":\"画家 教育家 艺术策展人\",\"avatar\":\"img\/user_header.png\"},\"update_at\":\"2015-08-05T08:40:51.620Z\"," +
-                                "\"scope\":\"油画\",\"type\":\"油画\",\"address\":\"上海\",\"contact\":\"18817505000\"," +
-                                "\"desc\":\"展会详情：展会PR文字，展会预计规模，展会嘉宾品论大咖可能会评选出的奖项\",\"condition\":\"展会详情：展会PR文字，展会预计规模，展会嘉宾品论大咖可能会评选出的奖项\",\"begin\":\"2015-08-05T08:40:51.620Z\"," +
-                                "\"end\":\"2015-08-05T08:40:51.620Z\",\"comments\":[{\"content\":\"回复\@asas:  加油，结合中国的水墨画\",\"type\":\"text\"," +
-                                "\"created_at\":\"2015-08-05T08:40:51.620Z\"," +
-                                "\"user\":{\"name\":\"饶宇\",\"avatar\":\"img\/user_header.png\"}},{\"url\":\"\"," +
-                                "\"type\":\"audio\",\"created_at\":\"2015-08-05T08:40:51.620Z\",\"user\":{\"name\":\"安东\",\"avatar\":\"img\/user_header.png\"}}]}";
-                        vm.activity = setActivityAttributes(JSON.parse(sample_activity));
-
+                        vm.activity = setActivityAttributes(data);
+                        vm.$nextTick(function () {
+                            var audiosParent = document.querySelectorAll(".sound-comment");
+                            [].forEach.call(audiosParent,function(ap){
+                                new AudioPlay(ap);
+                            });
+                        });
                     },
                     error : function(XMLHttpRequest, textStatus, errorThrown) {
                         console.log(XMLHttpRequest);
@@ -168,7 +176,6 @@
 //                        alert("异常！");
                     }
                 });
-
 
             }
         });
