@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV分享</title>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- build:css css/CV_share.css -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/share_public.css">
+    <link rel="stylesheet" href="css/CV_share.css">
+    <!-- endbuild -->
+    <script src="js/common.js"></script>
+    <!-- 开发完成后请使用min版 -->
+    <script src="js/vue.js"></script>
+</head>
+<body class="container">
+<section class="cv">
+    <section class="sec-wrapper">
+        <header class="page-header">
+            <img src="img/logo.png" class="logo">
+        </header>
+    </section>
+
+    <div class="page-body">
+        <div class="row">
+            <img src="img/cv_author.jpg">
+            <div class="cv-describ">
+                <strong class="name">{{resume.profile.name}}</strong><span class="place">{{resume.profile.address}}</span><br/>
+                <span class="job">{{resume.profile.bio}}</span>
+                <p class="describle">这里用一句话描述自己</p>
+            </div>
+        </div>
+
+        <div class="cv-experience">
+            <p class="ex-name">CouCou</p>
+            <div class="line"></div>
+            <p class="ex-title">个人经历</p>
+            <ul class="ex-wrapper">
+                <li v-for="p in resume.experiences.personal">{{p.start}}{{p.end}}{{p.content}}</li>
+            </ul>
+            <div class="line"></div>
+            <p class="ex-title">参加展览</p>
+            <ul class="ex-wrapper">
+                <li v-for="ex in resume.experiences.exhibition">{{ex.start}} - {{ex.end}}{{ex.content}}</li>
+            </ul>
+        </div>
+
+        <ul class="work-list">
+            <li v-for="artwork in resume.artworks" class="work-info-wrapper comment-wrapper">
+                <div class="row text-center"><div class="work-title-wrapper">{{artwork.author}}</div></div>
+                <div class="row text-center work-name">{{artwork.title}}</div>
+                <div class="work-row"><img v-bind:src="artwork.image" alt=""></div>
+                <div class="comment-user-info">
+                    <img v-bind:src="artwork.comment.image"  class="comment-header-img">
+                    <span class="comment-user-name">{{artwork.comment.name}}<br/><span class="job-tag-list">{{artwork.comment.bio}}</span></span>
+                </div>
+                <div v-if="artwork.comment.type=='text'" class="comment-text">
+                    <span v-if="artwork.comment.reply_to != null">回复<a href="javascript:;" class="reply-user">@{{artwork.comment.reply_to}}：</a> </span>  {{artwork.comment.content}}
+                </div>
+                <div v-if="artwork.comment.type=='audio'" class="comment-text">
+                    <div class="sound-comment">
+                        <div class="sound-sign">
+                            <div class="sound-time"><span class="time-panel">0</span>''</div>
+                            <div class="sound-img">
+                                <img src="img/audio_play_icon.png">
+                            </div>
+                        </div>
+                        <audio v-bind:src="artwork.comment.url" class="music" preload></audio>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div v-for="artwork_group in resume.artwork_groups" class="pic-list">
+            <div class="text-center"><div class="work-title-wrapper">{{artwork_group.name}}</div></div>
+            <div class="pic-list-explain">{{artwork_group.desc}}</div>
+            <div class="work-row">
+                <ul class="pic-wrapper clearfix">
+                    <li v-for="artwork in artwork_group.artworks">
+                        <div class="img-parcel">
+                            <img v-bind:src="artwork.image">
+                        </div>
+                        <h4 class="img-num text-center">
+                            <div class="work-title-wrapper">{{artwork.title}}</div>
+                        </h4>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        
+        <div class="work-row video-part">
+            <div class="video-wrapper">
+                <video controls="controls" v-bind:src="resume.video.url"></video>
+            </div>
+            <p><span>{{resume.video.title}}</span><br><span>摄于{{resume.video.date}}</span></p>
+        </div>
+
+        <p class="poet">
+            {{resume.video.desc}}
+        </p>
+
+        <!--带自我描述的图片-->
+        <ul class="describle-list work-row">
+            <li v-for="image in resume.images">
+                <img v-bind:src="image.image">
+                <div class="cv-describ">
+                    <span>{{image.title}}</span>
+                    <p class="describle-text">{{image.content}}</p>
+                </div>
+            </li>
+        </ul>
+        
+        <div v-for="show in resume.show" class="author-img-word row">
+            <img v-bind:src="show.image" alt="">
+            <p class="author-word">{{show.content}}</p>
+        </div>
+
+        <ul class="other-work-list">
+            <li v-for="news in resume.news">
+                <a href="{{news.url}}">
+                    <span class="other-text">{{news.title}}</span>
+                    <div  class="other-img"><img v-bind:src="news.image"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="sec-wrapper">
+        <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+        <footer class="page-footer">
+            <img src="img/qrcode.jpg" class="qrcode">
+            <p class="compay-name">LinkArt</p>
+            <p class="focus-text">扫一扫或长按二维码，加关注</p>
+        </footer>
+    </section>
+
+</section>
+</body>
+<!-- build:js js/CV_share.js -->
+<script src="js/jquery2.1.1.min.js"></script>
+<script src="js/audioPlay.js"></script>
+
+<script>
+
+    function setResumeAttributes(resume) {
+
+        for(var i = 0; i < resume.experiences.personal.length; i++){
+            var p = resume.experiences.personal[i];
+            p.start = takeTimeApart(p.start).year + "年";
+            p.end = takeTimeApart(p.end).year + "年";
+        }
+
+        for(i = 0; i < resume.experiences.exhibition.length; i++){
+            var exhi = resume.experiences.exhibition[i];
+            exhi.start = takeTimeApart(exhi.start).year;
+            exhi.end = takeTimeApart(exhi.end).year;
+        }
+
+        var date = takeTimeApart(resume.video.date);
+        resume.video.date = date.day + "/" + date.month + "/" + date.year;
+
+        var artworks = resume.artworks;
+        for(var i = 0; i < artworks.length; i++){
+            var comment = artworks[i].comment;
+            comment.time = getDateDiff(comment.created_at);
+            var res = /^回复@(.*):/.exec(comment.content);
+            comment.reply_to = res == null ? null : res[1];
+            if (res !== null)
+                comment.content = comment.content.substr(res[0].length);
+
+        }
+
+        return resume;
+    }
+
+    $(function() {
+
+        var vm = new Vue({
+            el: 'body',
+            data: {
+                resume: {profile:{}, experiences: [], artworks: [], artwork_groups: [], video: {}}
+            },
+            ready:function() {
+                $.ajax( {
+                    url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/resumes／1',
+                    data:{},
+                    type:'get',
+                    async: true,
+                    cache:false,
+                    dataType:"json",
+                    success:function(data) {
+                        vm.resume = setResumeAttributes(data);
+                        vm.$nextTick(function () {
+                            var audiosParent = document.querySelectorAll(".sound-comment");
+                            [].forEach.call(audiosParent,function(ap){
+                                new AudioPlay(ap);
+                            });
+                        });
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+//                        alert("异常！");
+                    }
+                });
+
+            }
+        });
+    })
+
+</script>
+<!-- endbuild -->
+</html>

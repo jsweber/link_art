@@ -137,7 +137,7 @@
         }
 
         var update_at_str = takeTimeApart(activity.update_at);
-        activity.update_at =  update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
+        activity.update_at = update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
 
         var end_str = takeTimeApart(activity.end);
         activity.end = end_str.year + "年" + end_str.month + "月" + end_str.day + "日";

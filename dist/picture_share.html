@@ -40,53 +40,5 @@
 </section>
 </body>
 <script src="js/picture_share.js"></script>
-<script>
-    /*
-    * 脚本开发区
-    * 说明：
-    * 页面的dom操作相关的js建议还是写在页面中，封装的一些相对独立的函数可以另起一个js文件
-    * */
-    $(function() {
-        var vm = new Vue({
-            el: '.pic-wrapper',
-            data: {
-                feed:"",
-                info: '1111',
-                list: [],
-                final: {msg:""},
-                urls: []
-            },
-            ready:function() {
-                jQuery.support.cors = true;
-                $.ajax( {
-                    url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/activities／1',
-                    data:{
 
-                    },
-                    contenttype :"application/x-www-form-urlencoded;charset=utf-8",
-                    type:'get',
-                    async: true,
-                    cache:false,
-                    dataType:"text",
-                    success:function(data) {
-
-                        data = JSON.parse("{\"urls\": [         {             \"url\": \"img/pic1.png\"         },         {             \"url\": \"img/pic2.png\"         },         {             \"url\": \"img/pic3.png\"         }     ] }");
-                        vm.urls = data.urls;
-
-                    },
-                    error : function(XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                        alert("异常！");
-                    }
-                });
-
-
-            }
-        });
-    })
-
-
-</script>
 </html>
