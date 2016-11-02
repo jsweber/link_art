@@ -36,6 +36,8 @@
         <ul class="article-content">
             <li>
                 <img src="img/article_img1.jpg" class="article-img">
+            </li>
+            <li>
                 <p class="article-text">对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神
                     似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天
                     给大家分享的就是世界级油画大师笔下的眼神，张张眉目传
@@ -43,6 +45,8 @@
             </li>
             <li>
                 <img src="img/article_img2.jpg" class="article-img">
+            </li>
+            <li>
                 <p class="article-text">嘘...... 接下来我们还是只看图不说话</p>
             </li>
             <li>
@@ -61,6 +65,7 @@
                     <li class="comment-wrapper">
                         <div class="comment-user-info">
                             <img src="img/user_header.png" alt="" class="comment-header-img">
+                            <img src="img/v_yellow_big.png" class="v-big-man">
                             <span class="comment-user-name">ASAS</span>
                             <div class="comment-time"><span>刚刚</span></div>
                         </div>
@@ -116,23 +121,33 @@
 <script>
     var data = "<h1><img src=\"http://imgsrc.baidu.com/forum/w%3D580/sign=6c994cd19058d109c4e3a9bae159ccd0/62c68335e5dde71121226c59a5efce1b9f1661d5.jpg\"width=\"440\"height=\"374\"/></h1><h1>对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神<br />似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天<br />给大家分享的就是世界级油画大师笔下的眼神，张张眉目传<br />情，一起来欣赏吧！</h1>";
     var r = getTempDate(data);
-    console.log(r.imgSrc);
-    console.log(r.text);
+    console.log(r);
 
     function getTempDate(data){
         var $temp = $("#tempDate");
         $temp.html(data);
-        var result = {};
-        var $h1s = $temp.find("h1");
-        result.imgSrc = $temp.find("img").attr("src");
-        result.text = $h1s.eq(1).html();
-        return result;
+        var contentArr = [];
+        var $h1s = $temp.children("h1");
+
+        for(var i=0;i<$h1s.length;i++){
+            var $h1 = $h1s.eq(i);
+            var str = $h1.html();
+            if(str.indexOf("img")>0 && str.indexOf("src")>0){
+                contentArr.push({
+                    key:"img",
+                    content:$h1.find("img").attr("src")
+                });
+            }else{
+                contentArr.push({
+                    key:"text",
+                    content:$h1.html()
+                });
+            }
+        }
+        return contentArr;
     }
 
-
-
 </script>
-
 <!-- endbuild -->
 <script>
 </script>
