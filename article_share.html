@@ -107,9 +107,32 @@
         <p class="focus-text">扫一扫或长按二维码，加关注</p>
     </footer>
 </section>
+
+<div id="tempDate" style="display:none"></div>
 </body>
 <!-- build:js js/article_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
+
+<script>
+    var data = "<h1><img src=\"http://imgsrc.baidu.com/forum/w%3D580/sign=6c994cd19058d109c4e3a9bae159ccd0/62c68335e5dde71121226c59a5efce1b9f1661d5.jpg\"width=\"440\"height=\"374\"/></h1><h1>对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神<br />似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天<br />给大家分享的就是世界级油画大师笔下的眼神，张张眉目传<br />情，一起来欣赏吧！</h1>";
+    var r = getTempDate(data);
+    console.log(r.imgSrc);
+    console.log(r.text);
+
+    function getTempDate(data){
+        var $temp = $("#tempDate");
+        $temp.html(data);
+        var result = {};
+        var $h1s = $temp.find("h1");
+        result.imgSrc = $temp.find("img").attr("src");
+        result.text = $h1s.eq(1).html();
+        return result;
+    }
+
+
+
+</script>
+
 <!-- endbuild -->
 <script>
 </script>
