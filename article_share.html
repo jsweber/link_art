@@ -24,34 +24,35 @@
         <img src="img/logo.png" class="logo">
         <div class="act-name font-bigger">{{article.title}}</div>
         <div class="user-info-wrapper">
-            <div class="header-img"><img src="img/user_header.png" alt=""></div>
+            <div class="header-img"><img v-bind::src="article.user.avatar" alt=""></div>
             <div class="user-info">
-                <div class="user-name">绕于</div>
-                <div class="user-tag"><span>画家</span><span>教育家</span><span>艺术策展人</span><div class="date">08-12-2016</div></div>
+                <div class="user-name">{{article.user.name}}</div>
+                <div class="user-tag"><span>{{article.user.bio}}</span><div class="date">{{article.update_at}}</div></div>
             </div>
         </div>
     </header>
 
     <div class="page-body">
-        <ul class="article-content">
-            <li>
-                <img src="img/article_img1.jpg" class="article-img">
-                <p class="article-text">对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神
-                    似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天
-                    给大家分享的就是世界级油画大师笔下的眼神，张张眉目传
-                    情，一起来欣赏吧！</p>
-            </li>
-            <li>
-                <img src="img/article_img2.jpg" class="article-img">
-                <p class="article-text">嘘...... 接下来我们还是只看图不说话</p>
-            </li>
-            <li>
-                <img src="img/article_img3.jpg" class="article-img">
-            </li>
-            <li>
-                <img src="img/article_img4.jpg" class="article-img">
-            </li>
-        </ul>
+        <!--<ul class="article-content">-->
+            <!--<li>-->
+                <!--<img src="img/article_img1.jpg" class="article-img">-->
+                <!--<p class="article-text">对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神-->
+                    <!--似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天-->
+                    <!--给大家分享的就是世界级油画大师笔下的眼神，张张眉目传-->
+                    <!--情，一起来欣赏吧！</p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="img/article_img2.jpg" class="article-img">-->
+                <!--<p class="article-text">嘘...... 接下来我们还是只看图不说话</p>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="img/article_img3.jpg" class="article-img">-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="img/article_img4.jpg" class="article-img">-->
+            <!--</li>-->
+        <!--</ul>-->
+        {{{article.content}}}
 
         <ul class="details-wrapper">
             <li class="details-slider">
@@ -119,7 +120,7 @@
         var vm = new Vue({
             el: 'body',
             data: {
-                article: {comments: [{user:{}}]}
+                article: {user: {}, comments: [{user:{}}]}
             },
             ready:function() {
                 $.ajax( {
