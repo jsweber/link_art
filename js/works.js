@@ -19,6 +19,14 @@ function setActivityAttributes(work) {
     var yesr_str = takeTimeApart(work.year);
     work.year = yesr_str.year + "年" + yesr_str.month + "月" + yesr_str.day + "日";
 
+    if(work.sell_type == 0){
+        work.sell_type = "出售";
+    }else if(work.sell_type == 1){
+        work.sell_type = "已售";
+    }else{
+        work.sell_type = "非卖品";
+    }
+
     return work;
 }
 

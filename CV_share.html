@@ -32,7 +32,7 @@
             <div class="cv-describ">
                 <strong class="name">{{resume.profile.name}}</strong><span class="place">{{resume.profile.address}}</span><br/>
                 <span class="job">{{resume.profile.bio}}</span>
-                <p class="describle">这里用一句话描述自己</p>
+                <p class="describle">{{resume.profile.v_info}}</p>
             </div>
         </div>
 
@@ -56,13 +56,13 @@
                 <div class="row text-center work-name">{{artwork.title}}</div>
                 <div class="work-row"><img v-bind:src="artwork.image" alt=""></div>
                 <div class="comment-user-info">
-                    <img v-bind:src="artwork.comment.image"  class="comment-header-img">
-                    <img src="img/v_yellow_big.png" class="v-big-man">
-                    <span class="comment-user-name">{{artwork.comment.name}}<br/><span class="job-tag-list">{{artwork.comment.bio}}</span></span>
+                    <img v-bind:src="artwork.comment.user.avatar"  class="comment-header-img">
+                    <img v-if="artwork.comment.verified" v-bind:src="artwork.comment.user.v_image" class="v-big-man">
+                    <span class="comment-user-name">{{artwork.comment.user.name}}<br/><span class="job-tag-list">{{artwork.comment.user.bio}}</span></span>
                 </div>
 
                 <div v-if="artwork.comment.type=='text'" class="comment-text">
-                    <span v-if="artwork.comment.reply_to != null">回复<a href="javascript:;" class="reply-user">@{{artwork.comment.reply_to}}：</a> </span>  {{artwork.comment.content}}
+                    <span v-if="artwork.comment.reply_to != null"><a href="javascript:;" class="reply-user">@{{artwork.comment.reply_to}}：</a> </span>  {{artwork.comment.content}}
                 </div>
                 <div v-if="artwork.comment.type=='audio'" class="comment-text">
                     <div class="sound-comment">
