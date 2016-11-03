@@ -22,12 +22,12 @@
 <section class="article">
     <header class="page-header">
         <img src="img/logo.png" class="logo">
-        <div class="act-name font-bigger">写实，大师笔下的三十双眼睛</div>
+        <div class="act-name font-bigger">{{article.title}}</div>
         <div class="user-info-wrapper">
-            <div class="header-img"><img src="img/user_header.png" alt=""></div>
+            <div class="header-img"><img v-bind:src="article.user.avatar" alt=""></div>
             <div class="user-info">
-                <div class="user-name">绕于</div>
-                <div class="user-tag"><span>画家</span><span>教育家</span><span>艺术策展人</span><div class="date">08-12-2016</div></div>
+                <div class="user-name">{{article.user.name}}</div>
+                <div class="user-tag"><span>{{article.user.bio}}</span><div class="date">{{article.update_at}}</div></div>
             </div>
         </div>
     </header>
@@ -35,25 +35,9 @@
     <div class="page-body">
         <ul class="article-content">
             <li>
-                <img src="img/article_img1.jpg" class="article-img">
-            </li>
-            <li>
-                <p class="article-text">对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神
-                    似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天
-                    给大家分享的就是世界级油画大师笔下的眼神，张张眉目传
-                    情，一起来欣赏吧！</p>
-            </li>
-            <li>
-                <img src="img/article_img2.jpg" class="article-img">
-            </li>
-            <li>
-                <p class="article-text">嘘...... 接下来我们还是只看图不说话</p>
-            </li>
-            <li>
-                <img src="img/article_img3.jpg" class="article-img">
-            </li>
-            <li>
-                <img src="img/article_img4.jpg" class="article-img">
+                <img v-bind:src="article.content.imgSrc" class="article-img">
+                <p class="article-text"></p>
+
             </li>
         </ul>
 
@@ -62,43 +46,29 @@
                 <div class="slider-title">评论</div>
                 <div class="line"></div>
                 <ul class="comment-list">
-                    <li class="comment-wrapper">
+                    <li v-for="comment in article.comments" class="comment-wrapper">
                         <div class="comment-user-info">
-                            <img src="img/user_header.png" alt="" class="comment-header-img">
-                            <img src="img/v_yellow_big.png" class="v-big-man">
-                            <span class="comment-user-name">ASAS</span>
-                            <div class="comment-time"><span>刚刚</span></div>
+                            <img v-bind:src="comment.user.avatar" alt="" class="comment-header-img">
+                            <img v-bind:src="comment.user.v_image" class="v-big-man">
+                            <span class="comment-user-name">{{comment.user.name}}</span>
+                            <div class="comment-time"><span>{{comment.time}}</span></div>
                         </div>
 
-                        <div class="comment-text">如何平衡美与累喃？美得不要不要的背后是 累的不行不行的</div>
-                    </li>
-                    <li class="comment-wrapper">
-                        <div class="comment-user-info">
-                            <img src="img/user_header.png" alt="" class="comment-header-img">
-                            <span class="comment-user-name">ASAS</span>
-                            <div class="comment-time"><span>一小时前</span></div>
+                        <div v-if="comment.type=='text'" class="comment-text">
+                            <span v-if="comment.reply_to != null"><a href="javascript:;" class="reply-user">@{{comment.reply_to}}：</a> </span>  {{comment.content}}
+                        </div>
+                        <div v-if="comment.type=='audio'" class="comment-text">
+                            <div class="sound-comment">
+                                <div class="sound-sign">
+                                    <div class="sound-time"><span class="time-panel">0</span>''</div>
+                                    <div class="sound-img">
+                                        <img src="img/audio_play_icon.png">
+                                    </div>
+                                </div>
+                                <audio v-bind:src="comment.url" class="music" preload></audio>
+                            </div>
                         </div>
 
-                        <div class="comment-text"><span>回复<a href="javascript:;" class="reply-user">@ASAS： </a></span>如何平衡美与累喃？美得不要不要的背后是 累的不行不行的如何平衡美与累喃？美得不要不要的背后是 累的不行不行的如何平衡美与累喃？美得不要不要的背后是 累的不行不行的如何平衡美与累喃？美得不要不要的背后是 累的不行不行的
-                        </div>
-                        <div class="comment-line"></div>
-                    </li>
-                    <li class="comment-wrapper">
-                        <div class="comment-user-info">
-                            <img src="img/user_header.png" alt="" class="comment-header-img">
-                            <span class="comment-user-name">ASAS</span>
-                            <div class="comment-time"><span>刚刚</span></div>
-                        </div>
-
-                        <div class="comment-text">如何平衡美与累喃？美得不要不要的背后是 累的不行不行的</div>
-                    </li>
-                    <li class="comment-wrapper">
-                        <div class="comment-user-info">
-                            <img src="img/user_header.png" alt="" class="comment-header-img">
-                            <span class="comment-user-name">ASAS</span>
-                            <div class="comment-time"><span>刚刚</span></div>
-                        </div>
-                        <div class="comment-text">如何平衡美与累喃？美得不要不要的背后是 累的不行不行的</div>
                     </li>
                 </ul>
                 <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
@@ -117,38 +87,105 @@
 </body>
 <!-- build:js js/article_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
+<script src="js/audioPlay.js"></script>
 
 <script>
-    var data = "<h1><img src=\"http://imgsrc.baidu.com/forum/w%3D580/sign=6c994cd19058d109c4e3a9bae159ccd0/62c68335e5dde71121226c59a5efce1b9f1661d5.jpg\"width=\"440\"height=\"374\"/></h1><h1>对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神<br />似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天<br />给大家分享的就是世界级油画大师笔下的眼神，张张眉目传<br />情，一起来欣赏吧！</h1>";
-    var r = getTempDate(data);
-    console.log(r);
 
     function getTempDate(data){
         var $temp = $("#tempDate");
         $temp.html(data);
-        var contentArr = [];
-        var $h1s = $temp.children("h1");
 
-        for(var i=0;i<$h1s.length;i++){
-            var $h1 = $h1s.eq(i);
-            var str = $h1.html();
-            if(str.indexOf("img")>0 && str.indexOf("src")>0){
-                contentArr.push({
-                    key:"img",
-                    content:$h1.find("img").attr("src")
-                });
-            }else{
-                contentArr.push({
-                    key:"text",
-                    content:$h1.html()
-                });
-            }
-        }
-        return contentArr;
+        var result = {};
+        var $h1s = $temp.find("h1");
+        result.imgSrc = $temp.find("img").attr("src");
+        result.text = $h1s.eq(1).html();
+        return result;
     }
+
+    function setArticleAttributes(article) {
+        var comments = article.comments;
+        for(var i = 0; i < comments.length; i++){
+            var comment = comments[i];
+            comment.time = getDateDiff(comment.created_at);
+            var res = /^回复@(.*):/.exec(comment.content);
+            comment.reply_to = res == null ? null : res[1];
+            if (res !== null)
+                comment.content = comment.content.substr(res[0].length);
+        }
+
+        var update_at_str = takeTimeApart(article.update_at);
+        article.update_at = update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
+
+        var data = article.content;
+        var r = getTempDate(data);
+
+        $(".article-text").html(r.text);
+
+        article.content = r;
+
+        return article;
+    }
+
+    $(function() {
+
+        var vm = new Vue({
+            el: 'body',
+            data: {
+                article: {user: {}, comments: [{user:{}}], content: {}}
+            },
+            ready:function() {
+                $.ajax( {
+                    url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/stories／1',
+                    data:{},
+                    type:'get',
+                    async: true,
+                    cache:false,
+                    dataType:"json",
+                    success:function(data) {
+                        vm.article = setArticleAttributes(data);
+
+                        vm.$nextTick(function () {
+                            var audiosParent = document.querySelectorAll(".sound-comment");
+                            [].forEach.call(audiosParent,function(ap){
+                                new AudioPlay(ap);
+                            });
+                        });
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+//                        alert("异常！");
+                    }
+                });
+
+            }
+        });
+    })
+
+//    function  getTempDate(data){
+//        var contentArr = [];
+//        var $h1s = $temp.children("h1");
+//
+//        for(var i=0;i<$h1s.length;i++){
+//            var $h1 = $h1s.eq(i);
+//            var str = $h1.html();
+//            if(str.indexOf("img")>0 && str.indexOf("src")>0){
+//                contentArr.push({
+//                    key:"img",
+//                    content:$h1.find("img").attr("src")
+//                });
+//            }else{
+//                contentArr.push({
+//                    key:"text",
+//                    content:$h1.html()
+//                });
+//            }
+//        }
+//        return contentArr;
+//    }
+
 
 </script>
 <!-- endbuild -->
-<script>
-</script>
 </html>

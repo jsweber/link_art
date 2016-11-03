@@ -67,7 +67,7 @@
                 </div>
                 <div class="one-info">
                     <span class="info-title">价格：</span>
-                    <span class="info-content">{{work.price}}</span>
+                    <span class="info-content">{{work.sell_price}}</span>
                 </div>
             </li>
 
@@ -88,7 +88,7 @@
                         </div>
 
                         <div v-if="comment.type=='text'" class="comment-text">
-                            <span v-if="comment.reply_to != null">回复<a href="javascript:;" class="reply-user">@{{comment.reply_to}}：</a> </span>  {{comment.content}}
+                            <span v-if="comment.reply_to != null"><a href="javascript:;" class="reply-user">@{{comment.reply_to}}：</a> </span>  {{comment.content}}
                         </div>
                         <div v-if="comment.type=='audio'" class="comment-text">
                             <div class="sound-comment">

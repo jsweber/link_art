@@ -24,14 +24,14 @@
     <header class="page-header">
         <img src="img/logo.png" class="logo">
         <div class="row">
-            <div class="nick-wrapper font-bigger">墙</div>
-            <div class="date">08-12-2016</div>
+            <div class="nick-wrapper font-bigger">{{picture.title}}</div>
+            <div class="date">{{picture.created_at}}</div>
         </div>
     </header>
 
     <div class="page-body">
         <ul class="pic-wrapper">
-            <li v-for="item in urls"><img  v-bind:src="item.url" ></li>
+            <li v-for="pic in picture.images"><img v-bind:src="pic.image" ></li>
         </ul>
         <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
     </div>
@@ -46,28 +46,29 @@
 <!-- build:js js/picture_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
 <script>
-    /*
-    * 脚本开发区
-    * 说明：
-    * 页面的dom操作相关的js建议还是写在页面中，封装的一些相对独立的函数可以另起一个js文件
-    * */
+    function setPictureAttributes(picture) {
+        var update_at_str = takeTimeApart(picture.created_at);
+        picture.created_at = update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
+
+        return picture;
+    }
+
     $(function() {
         var vm = new Vue({
-            el: '.pic-wrapper',
+            el: 'body',
             data: {
-                urls: []
+                picture: {images: {}}
             },
             ready:function() {
-                jQuery.support.cors = true;
                 $.ajax( {
-                    url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/activities／1',
+                    url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/gallerys／1',
                     data:{},
                     type:'get',
                     async: true,
                     cache:false,
-                    dataType:"text",
+                    dataType:"json",
                     success:function(data) {
-                        vm.urls = [{"url": "img/pic1.png"}, { "url": "img/pic2.png" }, {"url": "img/pic3.png" }];
+                        vm.picture = setPictureAttributes(data);
                     },
                     error : function(XMLHttpRequest, textStatus, errorThrown) {
                         console.log(XMLHttpRequest);

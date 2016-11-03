@@ -22,19 +22,19 @@
 <section class="text">
     <header class="page-header">
         <img src="img/logo.png" class="logo">
-        <div class="nick-wrapper font-bigger">一阵风</div>
+        <div class="nick-wrapper font-bigger">{{certain_comment.title}}</div>
         <div class="user-info-wrapper">
-            <div class="header-img"><img src="img/user_header.png" alt=""></div>
+            <div class="header-img"><img v-bind:src="certain_comment.user.avatar" alt=""></div>
             <div class="user-info">
-                <div class="user-name">绕于</div>
-                <div class="user-tag"><span>画家</span><span>教育家</span><span>艺术策展人</span><div class="date">08-12-2016</div></div>
+                <div class="user-name">{{certain_comment.user.name}}</div>
+                <div class="user-tag"><span>{{certain_comment.user.bio}}</span><div class="date">{{certain_comment.update_at}}</div></div>
             </div>
         </div>
     </header>
 
     <div class="page-body">
         <div>
-            <img src="img/text-pic.jpg" class="act-poster">
+            <img v_bind:src="certain_comment.image" class="act-poster">
         </div>
 
         <ul class="details-wrapper">
@@ -43,31 +43,31 @@
                 <div class="line"></div>
                 <div class="one-info">
                     <span class="info-title">作者：</span>
-                    <span class="info-content">饶宇</span>
+                    <span class="info-content">{{certain_comment.author}}</span>
                 </div>
                 <div class="one-info">
                     <span class="info-title">作品类型：</span>
-                    <span class="info-content">油画</span>
+                    <span class="info-content">{{certain_comment.type}}</span>
                 </div>
                 <div class="one-info">
                     <span class="info-title">作品材质：</span>
-                    <span class="info-content">油画布</span>
+                    <span class="info-content">{{certain_comment.texture}}</span>
                 </div>
                 <div class="one-info">
                     <span class="info-title">作品尺寸：</span>
-                    <span class="info-content">800mm*1400mm</span>
+                    <span class="info-content">{{certain_comment.size}}</span>
                 </div>
                 <div class="one-info">
                     <span class="info-title">创造年份：</span>
-                    <span class="info-content">2016年6月22日</span>
+                    <span class="info-content">{{certain_comment.year}}</span>
                 </div>
                 <div class="one-info">
                     <span class="info-title">出售类型：</span>
-                    <span class="info-content">出售</span>
+                    <span class="info-content">{{certain_comment.sell_type}}</span>
                 </div>
                 <div class="one-info">
                     <span class="info-title">价格：</span>
-                    <span class="info-content">120000元</span>
+                    <span v-show="certain_comment.sell_orice_visible" class="info-content">{{certain_comment.sell_price}}元</span>
                 </div>
             </li>
 
@@ -77,37 +77,42 @@
                 <ul class="comment-list">
                     <li class="comment-wrapper" id="my-comment">
                         <div class="comment-user-info">
-                            <img src="img/user_header.png"  class="comment-header-img">
-                            <img src="img/v_yellow_big.png" class="v-big-man">
-                            <span class="comment-user-name">ASAS<br/><span class="share-date">08-12.2016</span></span>
+                            <img v-bind:src="certain_comment.comment.user.avatar"  class="comment-header-img">
+                            <img v_bind:src="certain_comment.comment.user.v_image" class="v-big-man">
+                            <span class="comment-user-name">{{certain_comment.comment.user.name}}<br/><span class="share-date">{{certain_comment.comment.created_at}}</span></span>
                             <div class="comment-time">
-                                <img src="img/unknow_icon.png"><span>1222</span>
-                                <img src="img/heart_icon.png"><span>1222</span>
-                                <img src="img/message_icon.png"><span>122</span>
+                                <img src="img/unknow_icon.png"><span>{{certain_comment.comment.recommend_count}}</span>
+                                <img src="img/heart_icon.png"><span>{{certain_comment.comment.favorite_count}}</span>
+                                <img src="img/message_icon.png"><span>{{certain_comment.comment.reply_count}}</span>
                             </div>
                         </div>
 
-                        <div class="comment-text">如何平衡美与累喃？美得不要不要的背后是 累的不行不行的</div>
+                        <div class="comment-text">{{certain_comment.comment.content}}</div>
+                        <div v-if="certain_comment.comment.type=='text'" class="comment-text">
+                            <span v-if="certain_comment.comment.reply_to != null"><a href="javascript:;" class="reply-user">@{{certain_comment.comment.reply_to}}：</a> </span>  {{certain_comment.comment.content}}
+                        </div>
+                        <div v-if="certain_comment.comment.type=='audio'" class="comment-text">
+                            <div class="sound-comment">
+                                <div class="sound-sign">
+                                    <div class="sound-time"><span class="time-panel">0</span>''</div>
+                                    <div class="sound-img">
+                                        <img src="img/audio_play_icon.png">
+                                    </div>
+                                </div>
+                                <audio v-bind:src="certain_comment.comment.url" class="music" preload></audio>
+                            </div>
+                        </div>
                     </li>
-                    <li class="comment-wrapper">
+
+                    <li v-for="reply in certain_comment.comment.reply" class="comment-wrapper">
                         <div class="comment-user-info">
-                            <img src="img/user_header.png" alt="" class="comment-header-img">
-                            <img src="img/v_yellow_small.png" class="v-small-man">
-                            <span class="comment-user-name">ASAS</span>
+                            <img v-bind:src="reply.user.avatar" alt="" class="comment-header-img">
+                            <span class="comment-user-name">{{reply.user.name}}</span>
                         </div>
 
-                        <div class="comment-text">如何平衡美与累喃？美得不要不要的背后是 累的不行不行的如何平衡美与累喃？美得不要不要的背后是 累的不行不行的
-                        </div>
+                        <div class="comment-text">{{reply.content}}</div>
                     </li>
-                    <li class="comment-wrapper">
-                        <div class="comment-user-info">
-                            <img src="img/user_header.png" alt="" class="comment-header-img">
-                            <span class="comment-user-name">ASAS</span>
-                        </div>
 
-                        <div class="comment-text">如何平衡美与累喃？美得不要不要的背后是 累的不行不行的如何平衡美与累喃？美得不要不要的背后是 累的不行不行的
-                        </div>
-                    </li>
                 </ul>
                 <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
             </li>
@@ -125,5 +130,76 @@
 <script src="js/jquery2.1.1.min.js"></script>
 <!-- endbuild -->
 <script>
+    function setCommentAttributes(certain_comment) {
+        var comment =  certain_comment.comment;
+
+        if(comment.user.verified){
+            comment.user.v_image = comment.user.v_type == 1 ? 'img/v_blue_big.png' : 'img/v_yellow_big.png';
+        }
+
+        var time_part = takeTimeApart(comment.created_at);
+        comment.created_at = time_part.month + "-" + time_part.day + "," + time_part.year;
+
+        var replies = comment.reply;
+        for(var i = 0; i < replies.length; i++){
+            var reply = replies[i];
+            reply.time = getDateDiff(reply.created_at);
+            var res = /^回复@(.*):/.exec(reply.content);
+            reply.reply_to = res == null ? null : res[1];
+            if (res !== null)
+                reply.content = reply.content.substr(res[0].length);
+
+            if(reply.user.verified){
+                reply.user.v_image = reply.user.v_type == 1 ? 'img/v_blue_small.png' : 'img/v_yellow_small.png';
+            }
+
+            var time_part = takeTimeApart(reply.created_at);
+            reply.created_at = time_part.month + "-" + time_part.day + "," + time_part.year;
+        }
+
+        var update_at_str = takeTimeApart(certain_comment.update_at);
+        certain_comment.update_at = update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
+
+        var yesr_str = takeTimeApart(certain_comment.year);
+        certain_comment.year = yesr_str.year + "年" + yesr_str.month + "月" + yesr_str.day + "日";
+
+        return certain_comment;
+    }
+
+    $(function() {
+
+        var vm = new Vue({
+            el: 'body',
+            data: {
+                certain_comment: {user:{}, pictures: [{url: ''}], comment: {user:{}, reply:[{user:{}} ] }}
+            },
+            ready:function() {
+                $.ajax( {
+                    url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/comments/1',
+                    data:{},
+                    type:'get',
+                    async: true,
+                    cache:false,
+                    dataType:"json",
+                    success:function(data) {
+                        vm.certain_comment = setCommentAttributes(data);
+
+                        vm.$nextTick(function () {
+                            var audiosParent = document.querySelectorAll(".sound-comment");
+                            [].forEach.call(audiosParent,function(ap){
+                                new AudioPlay(ap);
+                            });
+                        });
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+
+            }
+        });
+    })
 </script>
 </html>
