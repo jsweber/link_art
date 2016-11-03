@@ -57,8 +57,8 @@
 .get-all-comment-btn{display:block;width:100%;line-height:2rem;text-align: center;background:#000 url("../img/comment-icon.png") no-repeat 1.6rem center;background-size:0.7rem;color:#fff;font-size:0.6rem;border-radius: 0.2rem;letter-spacing: 1px;margin-top:0.8rem;}
 
 .page-footer{width:12.8rem;height:11.5rem;border:1px solid #eaeaeb;margin:0.6rem auto 0;overflow: hidden;}
-.page-footer .qrcode{width:6.4rem;margin:0.9rem auto 0;display: block;}
-.page-footer .compay-name{font-size:0.8rem;text-align: center;margin-top:1.2rem;font-weight: bold;}
+.page-footer .qrcode{width:7.68rem;height:7.68rem;margin:1rem auto 0;display: block;}
+.page-footer .compay-name{font-size:0.8rem;text-align: center;margin-top:1.2rem;font-weight: bold;display:none;}
 .page-footer .focus-text{text-align: center;margin-top:0.5rem;color:#7b7b7b;}
 
 .line{width:100%;border-bottom:1px solid #d8d8d8;margin-top:0.3rem;letter-spacing: 1px;}
