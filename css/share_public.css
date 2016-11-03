@@ -33,8 +33,14 @@
 
 .comment-list{width:100%;}
 .comment-list .comment-wrapper{width:100%;margin-bottom:0.3rem;}
-.comment-user-info{width:100%;height:2.3rem; -webkit-box-sizing: border-box;box-sizing: border-box;padding-top:0.3rem;}
+.comment-user-info{width:100%;height:2.3rem; -webkit-box-sizing: border-box;box-sizing: border-box;padding-top:0.3rem;position: relative;}
 .comment-header-img{width:2rem;height:2rem;float:left;}
+.sound .v-small-man,.text .v-small-man{width:0.5rem;bottom:0.3rem;left:1.5rem;}
+.v-big-man{width:0.6rem;position: absolute;bottom:0;left:1.4rem;}
+
+.sound .v-small-gov,.text .v-small-gov{width:0.5rem;bottom:0.3rem;left:1.5rem;}
+.v-big-gov{width:0.6rem;position: absolute;bottom:0;left:1.4rem;}
+
 .comment-user-name{width:4rem;float:left;font-size:0.6rem;font-weight: bold;line-height: 2rem;height:2rem;margin-left:0.5rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .comment-time{width:7.6rem;float:right;line-height: 2rem;height: 2rem;text-align: right}
 .comment-time span{}

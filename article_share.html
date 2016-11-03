@@ -37,18 +37,8 @@
             <li>
                 <img v-bind:src="article.content.imgSrc" class="article-img">
                 <p class="article-text"></p>
+
             </li>
-            <!--{{article.content.text}}-->
-            <!--<li>-->
-                <!--<img src="img/article_img2.jpg" class="article-img">-->
-                <!--<p class="article-text">嘘...... 接下来我们还是只看图不说话</p>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<img src="img/article_img3.jpg" class="article-img">-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<img src="img/article_img4.jpg" class="article-img">-->
-            <!--</li>-->
         </ul>
 
         <ul class="details-wrapper">
@@ -59,6 +49,7 @@
                     <li v-for="comment in article.comments" class="comment-wrapper">
                         <div class="comment-user-info">
                             <img v-bind:src="comment.user.avatar" alt="" class="comment-header-img">
+                            <img v-bind:src="comment.user.v_image" class="v-big-man">
                             <span class="comment-user-name">{{comment.user.name}}</span>
                             <div class="comment-time"><span>{{comment.time}}</span></div>
                         </div>
@@ -100,15 +91,14 @@
 
 <script>
 
-
     function getTempDate(data){
         var $temp = $("#tempDate");
         $temp.html(data);
+
         var result = {};
         var $h1s = $temp.find("h1");
         result.imgSrc = $temp.find("img").attr("src");
         result.text = $h1s.eq(1).html();
-//        result.text = result.text.replace(/<br\s*\/?>/gi,"\r\n\r\n");
         return result;
     }
 
@@ -172,6 +162,28 @@
             }
         });
     })
+
+//    function  getTempDate(data){
+//        var contentArr = [];
+//        var $h1s = $temp.children("h1");
+//
+//        for(var i=0;i<$h1s.length;i++){
+//            var $h1 = $h1s.eq(i);
+//            var str = $h1.html();
+//            if(str.indexOf("img")>0 && str.indexOf("src")>0){
+//                contentArr.push({
+//                    key:"img",
+//                    content:$h1.find("img").attr("src")
+//                });
+//            }else{
+//                contentArr.push({
+//                    key:"text",
+//                    content:$h1.html()
+//                });
+//            }
+//        }
+//        return contentArr;
+//    }
 
 
 </script>

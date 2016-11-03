@@ -24,17 +24,17 @@
         <img src="img/logo.png" class="logo">
         <div class="nick-wrapper font-bigger">{{certain_comment.title}}</div>
         <div class="user-info-wrapper">
-            <div class="header-img"><img v-bind:src="certain_comment.avatar" alt=""></div>
+            <div class="header-img"><img v-bind:src="certain_comment.user.avatar" alt=""></div>
             <div class="user-info">
                 <div class="user-name">{{certain_comment.user.name}}</div>
-                <div class="user-tag"><span>{{certain_comment.user.bio}}</span><div class="date">{{certain_comment.user.update_at}}</div></div>
+                <div class="user-tag"><span>{{certain_comment.user.bio}}</span><div class="date">{{certain_comment.update_at}}</div></div>
             </div>
         </div>
     </header>
 
     <div class="page-body">
         <div>
-            <img src="img/text-pic.jpg" class="act-poster">
+            <img v_bind:src="certain_comment.image" class="act-poster">
         </div>
 
         <ul class="details-wrapper">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="one-info">
                     <span class="info-title">价格：</span>
-                    <span v-show="certain_comment.sell_orice_visible" class="info-content">{{certain_comment.price}}</span>
+                    <span v-show="certain_comment.sell_orice_visible" class="info-content">{{certain_comment.sell_price}}元</span>
                 </div>
             </li>
 
@@ -77,19 +77,34 @@
                 <ul class="comment-list">
                     <li class="comment-wrapper" id="my-comment">
                         <div class="comment-user-info">
-                            <img v-bind:src="(certain_comment.comments)[0].user.avatar"  class="comment-header-img">
-                            <span class="comment-user-name">{{centain_comment.comments[0].user.name}}<br/><span class="share-date">{{centain_comment.comments[0].created_at}}</span></span>
+                            <img v-bind:src="certain_comment.comment.user.avatar"  class="comment-header-img">
+                            <img v_bind:src="certain_comment.comment.user.v_image" class="v-big-man">
+                            <span class="comment-user-name">{{certain_comment.comment.user.name}}<br/><span class="share-date">{{certain_comment.comment.created_at}}</span></span>
                             <div class="comment-time">
-                                <img src="img/unknow_icon.png"><span>1222</span>
-                                <img src="img/heart_icon.png"><span>1222</span>
-                                <img src="img/message_icon.png"><span>122</span>
+                                <img src="img/unknow_icon.png"><span>{{certain_comment.comment.recommend_count}}</span>
+                                <img src="img/heart_icon.png"><span>{{certain_comment.comment.favorite_count}}</span>
+                                <img src="img/message_icon.png"><span>{{certain_comment.comment.reply_count}}</span>
                             </div>
                         </div>
 
-                        <div class="comment-text">{{centain_comment.comments[0].content}}</div>
+                        <div class="comment-text">{{certain_comment.comment.content}}</div>
+                        <div v-if="certain_comment.comment.type=='text'" class="comment-text">
+                            <span v-if="certain_comment.comment.reply_to != null"><a href="javascript:;" class="reply-user">@{{certain_comment.comment.reply_to}}：</a> </span>  {{certain_comment.comment.content}}
+                        </div>
+                        <div v-if="certain_comment.comment.type=='audio'" class="comment-text">
+                            <div class="sound-comment">
+                                <div class="sound-sign">
+                                    <div class="sound-time"><span class="time-panel">0</span>''</div>
+                                    <div class="sound-img">
+                                        <img src="img/audio_play_icon.png">
+                                    </div>
+                                </div>
+                                <audio v-bind:src="certain_comment.comment.url" class="music" preload></audio>
+                            </div>
+                        </div>
                     </li>
 
-                    <li v-for="reply in certain_comment.comments[0].reply" class="comment-wrapper">
+                    <li v-for="reply in certain_comment.comment.reply" class="comment-wrapper">
                         <div class="comment-user-info">
                             <img v-bind:src="reply.user.avatar" alt="" class="comment-header-img">
                             <span class="comment-user-name">{{reply.user.name}}</span>
@@ -116,7 +131,14 @@
 <!-- endbuild -->
 <script>
     function setCommentAttributes(certain_comment) {
-        var comment =  certain_comment.comments[0];
+        var comment =  certain_comment.comment;
+
+        if(comment.user.verified){
+            comment.user.v_image = comment.user.v_type == 1 ? 'img/v_blue_big.png' : 'img/v_yellow_big.png';
+        }
+
+        var time_part = takeTimeApart(comment.created_at);
+        comment.created_at = time_part.month + "-" + time_part.day + "," + time_part.year;
 
         var replies = comment.reply;
         for(var i = 0; i < replies.length; i++){
@@ -126,9 +148,14 @@
             reply.reply_to = res == null ? null : res[1];
             if (res !== null)
                 reply.content = reply.content.substr(res[0].length);
+
+            if(reply.user.verified){
+                reply.user.v_image = reply.user.v_type == 1 ? 'img/v_blue_small.png' : 'img/v_yellow_small.png';
+            }
+
+            var time_part = takeTimeApart(reply.created_at);
+            reply.created_at = time_part.month + "-" + time_part.day + "," + time_part.year;
         }
-        var created_at_str = takeTimeApart(certain_comment.update_at);
-        certain_comment.created_at = created_at_str.month + "-" + created_at_str.day + "," + created_at_str.year;
 
         var update_at_str = takeTimeApart(certain_comment.update_at);
         certain_comment.update_at = update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
@@ -144,7 +171,7 @@
         var vm = new Vue({
             el: 'body',
             data: {
-                certain_comment: {user:{}, pictures: [{url: ''}], comments: [{user:{}}]}
+                certain_comment: {user:{}, pictures: [{url: ''}], comment: {user:{}, reply:[{user:{}} ] }}
             },
             ready:function() {
                 $.ajax( {
@@ -168,7 +195,6 @@
                         console.log(XMLHttpRequest);
                         console.log(textStatus);
                         console.log(errorThrown);
-//                        alert("异常！");
                     }
                 });
 
