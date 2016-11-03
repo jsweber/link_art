@@ -27,6 +27,10 @@ function setResumeAttributes(resume) {
         if (res !== null)
             comment.content = comment.content.substr(res[0].length);
 
+        if(comment.user.verified){
+            comment.user.v_image = comment.user.v_type == 1 ? 'img/v_small_big.png' : 'img/v_blue_small.png';
+        }
+
     }
 
     return resume;

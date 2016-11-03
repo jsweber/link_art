@@ -34,7 +34,7 @@
 
     <div class="page-body">
         <div>
-            <img v_bind:src="certain_comment.image" class="act-poster">
+            <img v-bind:src="certain_comment.image" class="act-poster">
         </div>
 
         <ul class="details-wrapper">
@@ -78,7 +78,7 @@
                     <li class="comment-wrapper" id="my-comment">
                         <div class="comment-user-info">
                             <img v-bind:src="certain_comment.comment.user.avatar"  class="comment-header-img">
-                            <img v_bind:src="certain_comment.comment.user.v_image" class="v-big-man">
+                            <img v-if="certain_comment.comment.user.verified" v-bind:src="certain_comment.comment.user.v_image" class="v-big-man">
                             <span class="comment-user-name">{{certain_comment.comment.user.name}}<br/><span class="share-date">{{certain_comment.comment.created_at}}</span></span>
                             <div class="comment-time">
                                 <img src="img/unknow_icon.png"><span>{{certain_comment.comment.recommend_count}}</span>
@@ -87,7 +87,6 @@
                             </div>
                         </div>
 
-                        <div class="comment-text">{{certain_comment.comment.content}}</div>
                         <div v-if="certain_comment.comment.type=='text'" class="comment-text">
                             <span v-if="certain_comment.comment.reply_to != null"><a href="javascript:;" class="reply-user">@{{certain_comment.comment.reply_to}}：</a> </span>  {{certain_comment.comment.content}}
                         </div>
@@ -128,78 +127,8 @@
 </body>
 <!-- build:js js/text_comment_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
+<script src="js/audioPlay.js"></script>
+v<script src="js/text_comment.js"></script>
 <!-- endbuild -->
-<script>
-    function setCommentAttributes(certain_comment) {
-        var comment =  certain_comment.comment;
 
-        if(comment.user.verified){
-            comment.user.v_image = comment.user.v_type == 1 ? 'img/v_blue_big.png' : 'img/v_yellow_big.png';
-        }
-
-        var time_part = takeTimeApart(comment.created_at);
-        comment.created_at = time_part.month + "-" + time_part.day + "," + time_part.year;
-
-        var replies = comment.reply;
-        for(var i = 0; i < replies.length; i++){
-            var reply = replies[i];
-            reply.time = getDateDiff(reply.created_at);
-            var res = /^回复@(.*):/.exec(reply.content);
-            reply.reply_to = res == null ? null : res[1];
-            if (res !== null)
-                reply.content = reply.content.substr(res[0].length);
-
-            if(reply.user.verified){
-                reply.user.v_image = reply.user.v_type == 1 ? 'img/v_blue_small.png' : 'img/v_yellow_small.png';
-            }
-
-            var time_part = takeTimeApart(reply.created_at);
-            reply.created_at = time_part.month + "-" + time_part.day + "," + time_part.year;
-        }
-
-        var update_at_str = takeTimeApart(certain_comment.update_at);
-        certain_comment.update_at = update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
-
-        var yesr_str = takeTimeApart(certain_comment.year);
-        certain_comment.year = yesr_str.year + "年" + yesr_str.month + "月" + yesr_str.day + "日";
-
-        return certain_comment;
-    }
-
-    $(function() {
-
-        var vm = new Vue({
-            el: 'body',
-            data: {
-                certain_comment: {user:{}, pictures: [{url: ''}], comment: {user:{}, reply:[{user:{}} ] }}
-            },
-            ready:function() {
-                $.ajax( {
-                    url:'https://private-anon-2eecc86b83-linkart.apiary-mock.com/comments/1',
-                    data:{},
-                    type:'get',
-                    async: true,
-                    cache:false,
-                    dataType:"json",
-                    success:function(data) {
-                        vm.certain_comment = setCommentAttributes(data);
-
-                        vm.$nextTick(function () {
-                            var audiosParent = document.querySelectorAll(".sound-comment");
-                            [].forEach.call(audiosParent,function(ap){
-                                new AudioPlay(ap);
-                            });
-                        });
-                    },
-                    error : function(XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest);
-                        console.log(textStatus);
-                        console.log(errorThrown);
-                    }
-                });
-
-            }
-        });
-    })
-</script>
 </html>
