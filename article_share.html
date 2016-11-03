@@ -24,7 +24,7 @@
         <img src="img/logo.png" class="logo">
         <div class="act-name font-bigger">{{article.title}}</div>
         <div class="user-info-wrapper">
-            <div class="header-img"><img v-bind::src="article.user.avatar" alt=""></div>
+            <div class="header-img"><img v-bind:src="article.user.avatar" alt=""></div>
             <div class="user-info">
                 <div class="user-name">{{article.user.name}}</div>
                 <div class="user-tag"><span>{{article.user.bio}}</span><div class="date">{{article.update_at}}</div></div>
@@ -33,14 +33,12 @@
     </header>
 
     <div class="page-body">
-        <!--<ul class="article-content">-->
-            <!--<li>-->
-                <!--<img src="img/article_img1.jpg" class="article-img">-->
-                <!--<p class="article-text">对于肖像画来讲，大家都知道不仅要讲究形似，更要讲究神-->
-                    <!--似，而在一幅画中最能表达人物神态的部分非眼睛莫属今天-->
-                    <!--给大家分享的就是世界级油画大师笔下的眼神，张张眉目传-->
-                    <!--情，一起来欣赏吧！</p>-->
-            <!--</li>-->
+        <ul class="article-content">
+            <li>
+                <img v-bind:src="article.content.imgSrc" class="article-img">
+                <p class="article-text"></p>
+            </li>
+            <!--{{article.content.text}}-->
             <!--<li>-->
                 <!--<img src="img/article_img2.jpg" class="article-img">-->
                 <!--<p class="article-text">嘘...... 接下来我们还是只看图不说话</p>-->
@@ -51,8 +49,7 @@
             <!--<li>-->
                 <!--<img src="img/article_img4.jpg" class="article-img">-->
             <!--</li>-->
-        <!--</ul>-->
-        {{{article.content}}}
+        </ul>
 
         <ul class="details-wrapper">
             <li class="details-slider">
@@ -94,14 +91,29 @@
         <p class="focus-text">扫一扫或长按二维码，加关注</p>
     </footer>
 </section>
+
+<div id="tempDate" style="display:none"></div>
 </body>
 <!-- build:js js/article_share.js -->
 <script src="js/jquery2.1.1.min.js"></script>
 <script src="js/audioPlay.js"></script>
-<!-- endbuild -->
+
 <script>
-    function setArticleAttributes(work) {
-        var comments = work.comments;
+
+
+    function getTempDate(data){
+        var $temp = $("#tempDate");
+        $temp.html(data);
+        var result = {};
+        var $h1s = $temp.find("h1");
+        result.imgSrc = $temp.find("img").attr("src");
+        result.text = $h1s.eq(1).html();
+//        result.text = result.text.replace(/<br\s*\/?>/gi,"\r\n\r\n");
+        return result;
+    }
+
+    function setArticleAttributes(article) {
+        var comments = article.comments;
         for(var i = 0; i < comments.length; i++){
             var comment = comments[i];
             comment.time = getDateDiff(comment.created_at);
@@ -109,10 +121,19 @@
             comment.reply_to = res == null ? null : res[1];
             if (res !== null)
                 comment.content = comment.content.substr(res[0].length);
-
         }
 
-        return work;
+        var update_at_str = takeTimeApart(article.update_at);
+        article.update_at = update_at_str.month + "-" + update_at_str.day + "," + update_at_str.year;
+
+        var data = article.content;
+        var r = getTempDate(data);
+
+        $(".article-text").html(r.text);
+
+        article.content = r;
+
+        return article;
     }
 
     $(function() {
@@ -120,7 +141,7 @@
         var vm = new Vue({
             el: 'body',
             data: {
-                article: {user: {}, comments: [{user:{}}]}
+                article: {user: {}, comments: [{user:{}}], content: {}}
             },
             ready:function() {
                 $.ajax( {
@@ -154,4 +175,5 @@
 
 
 </script>
+<!-- endbuild -->
 </html>
