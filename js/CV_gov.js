@@ -19,7 +19,7 @@ function setResumeAttributes(resume) {
     resume.video.date = date.day + "/" + date.month + "/" + date.year;
 
     var artworks = resume.artworks;
-    for(var i = 0; i < artworks.length; i++){
+    for(i = 0; i < artworks.length; i++){
         var comment = artworks[i].comment;
         comment.time = getDateDiff(comment.created_at);
         var res = /^回复@(.*):/.exec(comment.content);
@@ -27,6 +27,17 @@ function setResumeAttributes(resume) {
         if (res !== null)
             comment.content = comment.content.substr(res[0].length);
 
+        if(comment.user.verified){
+            comment.user.v_image = comment.user.v_type == 1 ? 'img/v_yellow_big.png' : 'img/v_blue_big.png';
+        }
+    }v 
+
+    var artists = resume.artists.users;
+    for(i = 0; i < artists.length; i++){
+        var artist = artists[i];
+        if(artist.verified){
+            artist.v_image = artist.v_type == 1 ? 'img/v_yellow_big.png' : 'img/v_blue_big.png';
+        }
     }
 
     return resume;
