@@ -85,7 +85,8 @@
                 <ul class="pic-wrapper clearfix">
                     <li v-for="artwork in artwork_group.artworks">
                         <div class="img-parcel">
-                            <img v-bind:src="artwork.image">
+                            <a href="works_share.html"><img v-bind:src="artwork.image"></a>
+
                         </div>
                         <h4 class="img-num text-center">
                             <div class="work-title-wrapper">{{artwork.title}}</div>
