@@ -1,9 +1,10 @@
 .activity{width:100%;background:#fff;}
 .signup{display: block;background:#fcdc46;font-size: 0.8rem;width:3.4rem;height:1.66rem;line-height: 1.66rem;text-align: center;margin-top:0.7rem;}
-.artists-count .artwork-count{float:right;line-height: 1.2rem;height:1.2rem;font-weight: bold;font-size: 0.3rem}
-.artist-image{width: 3rem;height: auto;margin-left: 0.53rem;margin-top: 0.42rem}
-.artwork-list{margin-left: 0.5rem;}
-.artwork-image{width: 3.41rem;height: auto;margin-right: 0.05rem;margin-top: 0.42rem}
+.artists-count ,.artwork-count{float:right;line-height: 1.2rem;height:1.2rem;font-weight: bold;font-size: 0.5rem;position: absolute;top:0.1rem;right:0;}
+.artist-image,.prompt-btn{width: 2.96rem;margin-left: 0.6rem;margin-top: 0.5rem}
+.prompt-btn{display:inline-block;}
+.artwork-list{}
+.artwork-image{width: 3.4rem;height: auto;margin-left: 0.3rem;margin-top: 0.3rem;float:left;}
 
 
 
