@@ -34,13 +34,14 @@
 
 .pic-list{width:100%;}
 .pic-list-explain{line-height: 1rem;margin:1rem 0;}
-.pic-wrapper{width:100%;}
-.pic-wrapper li{width:7.55rem;float:left;margin-bottom:1rem;}
-.pic-wrapper li:nth-of-type(2n){float:right;}
-.img-parcel{width:7.55rem;height:7.55rem;overflow: hidden;}
-.pic-wrapper .img-parcel img{width:100%;display: block}
-.pic-wrapper .img-num{margin-top:0.6rem;}
-.img-num .work-title-wrapper{font-size:0.6rem;}
+.artist-list{width:100%;}
+.artist-list li{width:4.2rem;float:left;margin-bottom:0.6rem;margin-left:0.7rem;position:relative;}
+.artist-list li .artist-header{width:4.2rem;height:4.2rem;position: relative;background:#ccc;border-radius:2.1rem;overflow: hidden; }
+.artist-list li > img{width: 1.2rem;left:3rem;top:3rem;}
+.artist-list li .artist-header img{display: block;width:100%;}
+.artist-list li .artist-name{width:4.2rem;height:1rem;text-align:center;margin-top:0.3rem;position: relative;}
+.artist-list li .artist-name .dai{display:inline-block;color:#eaca2a;background:#000;width:0.768rem;height:0.768rem;position: absolute;right:0.5rem;top:0rem;}
+
 
 .video-part{margin-top:5rem;}
 .video-wrapper{width:100%;height:9.6rem;overflow: hidden;position: relative;}
@@ -76,5 +77,3 @@
 .work-title-wrapper:after{content:"";width:0.32rem;height:1.28rem;background:url("../img/title_right.png") no-repeat left top;background-size:100%;position: absolute;right:0;top:0;}
 
 .text-center{text-align: center;}
-
-

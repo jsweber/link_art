@@ -23,7 +23,7 @@
 .act-poster{display: block;width:100%;}
 
 .details-wrapper{width:100%;}
-.details-wrapper .details-slider{margin-top:1rem;}
+.details-wrapper .details-slider{margin-top:1rem;position: relative;}
 .details-slider .slider-title{height:1.2rem;-webkit-box-sizing: border-box;box-sizing: border-box;border-left:0.2rem solid #fcdc46;font-size: 0.8rem;text-indent: 0.5rem;line-height: 1.2rem;}
 .one-info{height:1.1rem;}
 .one-info .info-title,.one-info .info-content{font-size:0.56rem;line-height: 1.1rem;}
@@ -33,8 +33,14 @@
 
 .comment-list{width:100%;}
 .comment-list .comment-wrapper{width:100%;margin-bottom:0.3rem;}
-.comment-user-info{width:100%;height:2.3rem; -webkit-box-sizing: border-box;box-sizing: border-box;padding-top:0.3rem;}
+.comment-user-info{width:100%;height:2.3rem; -webkit-box-sizing: border-box;box-sizing: border-box;padding-top:0.3rem;position: relative;}
 .comment-header-img{width:2rem;height:2rem;float:left;}
+.sound .v-small-man,.text .v-small-man{width:0.5rem;bottom:0.3rem;left:1.5rem;}
+.v-big-man{width:0.6rem;position: absolute;bottom:0;left:1.4rem;}
+
+.sound .v-small-gov,.text .v-small-gov{width:0.5rem;bottom:0.3rem;left:1.5rem;}
+.v-big-gov{width:0.6rem;position: absolute;bottom:0;left:1.4rem;}
+
 .comment-user-name{width:4rem;float:left;font-size:0.6rem;font-weight: bold;line-height: 2rem;height:2rem;margin-left:0.5rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .comment-time{width:7.6rem;float:right;line-height: 2rem;height: 2rem;text-align: right}
 .comment-time span{}
@@ -51,8 +57,9 @@
 .get-all-comment-btn{display:block;width:100%;line-height:2rem;text-align: center;background:#000 url("../img/comment-icon.png") no-repeat 1.6rem center;background-size:0.7rem;color:#fff;font-size:0.6rem;border-radius: 0.2rem;letter-spacing: 1px;margin-top:0.8rem;}
 
 .page-footer{width:12.8rem;height:11.5rem;border:1px solid #eaeaeb;margin:0.6rem auto 0;overflow: hidden;}
-.page-footer .qrcode{width:6.4rem;margin:0.9rem auto 0;display: block;}
-.page-footer .compay-name{font-size:0.8rem;text-align: center;margin-top:1.2rem;font-weight: bold;}
+.page-footer .qrcode{width:7.68rem;height:7.68rem;margin:1rem auto 0;display: block;}
+.page-footer .compay-name{font-size:0.8rem;text-align: center;margin-top:1.2rem;font-weight: bold;display:none;}
 .page-footer .focus-text{text-align: center;margin-top:0.5rem;color:#7b7b7b;}
 
 .line{width:100%;border-bottom:1px solid #d8d8d8;margin-top:0.3rem;letter-spacing: 1px;}
+.font-big7{font-size:0.7rem;}
