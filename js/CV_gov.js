@@ -3,17 +3,17 @@
  */
 function setResumeAttributes(resume) {
 
-    for(var i = 0; i < resume.experiences.personal.length; i++){
-        var p = resume.experiences.personal[i];
-        p.start = takeTimeApart(p.start).year + "年";
-        p.end = takeTimeApart(p.end).year + "年";
-    }
-
-    for(i = 0; i < resume.experiences.exhibition.length; i++){
-        var exhi = resume.experiences.exhibition[i];
-        exhi.start = takeTimeApart(exhi.start).year;
-        exhi.end = takeTimeApart(exhi.end).year;
-    }
+    // for(var i = 0; i < resume.experiences.personal.length; i++){
+    //     var p = resume.experiences.personal[i];
+    //     p.start = takeTimeApart(p.start).year + "年";
+    //     p.end = takeTimeApart(p.end).year + "年";
+    // }
+    //
+    // for(i = 0; i < resume.experiences.exhibition.length; i++){
+    //     var exhi = resume.experiences.exhibition[i];
+    //     exhi.start = takeTimeApart(exhi.start).year;
+    //     exhi.end = takeTimeApart(exhi.end).year;
+    // }
 
     var date = takeTimeApart(resume.video.date);
     resume.video.date = date.day + "/" + date.month + "/" + date.year;

@@ -63,3 +63,4 @@
 
 .line{width:100%;border-bottom:1px solid #d8d8d8;margin-top:0.3rem;letter-spacing: 1px;}
 .font-big7{font-size:0.7rem;}
+.blur{-webkit-filter: blur(1px);-moz-filter: blur(1px);-ms-filter: blur(1px);filter: blur(1px);}
