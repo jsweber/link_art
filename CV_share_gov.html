@@ -18,7 +18,13 @@
     <!-- 开发完成后请使用min版 -->
     <script src="js/vue.js"></script>
 </head>
+
 <body class="container">
+
+<div class="modal-dialog" onclick="$(this).hide()">
+    <img class="dialog-img" src="" >
+</div>
+
 <section class="cv">
     <section class="sec-wrapper">
         <header class="page-header">
@@ -41,12 +47,12 @@
             <div class="line"></div>
             <p class="ex-title">个人经历</p>
             <ul class="ex-wrapper">
-                <li v-for="p in resume.experiences.personal">{{p.start}}{{p.end}}{{p.content}}</li>
+                <li v-for="p in resume.experiences.personal">{{p.content}}</li>
             </ul>
             <div class="line"></div>
             <p class="ex-title">参加展览</p>
             <ul class="ex-wrapper">
-                <li v-for="ex in resume.experiences.exhibition">{{ex.start}} - {{ex.end}}{{ex.content}}</li>
+                <li v-for="ex in resume.experiences.exhibition">{{ex.content}}</li>
             </ul>
         </div>
 

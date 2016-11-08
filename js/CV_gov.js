@@ -3,17 +3,17 @@
  */
 function setResumeAttributes(resume) {
 
-    for(var i = 0; i < resume.experiences.personal.length; i++){
-        var p = resume.experiences.personal[i];
-        p.start = takeTimeApart(p.start).year + "年";
-        p.end = takeTimeApart(p.end).year + "年";
-    }
-
-    for(i = 0; i < resume.experiences.exhibition.length; i++){
-        var exhi = resume.experiences.exhibition[i];
-        exhi.start = takeTimeApart(exhi.start).year;
-        exhi.end = takeTimeApart(exhi.end).year;
-    }
+    // for(var i = 0; i < resume.experiences.personal.length; i++){
+    //     var p = resume.experiences.personal[i];
+    //     p.start = takeTimeApart(p.start).year + "年";
+    //     p.end = takeTimeApart(p.end).year + "年";
+    // }
+    //
+    // for(i = 0; i < resume.experiences.exhibition.length; i++){
+    //     var exhi = resume.experiences.exhibition[i];
+    //     exhi.start = takeTimeApart(exhi.start).year;
+    //     exhi.end = takeTimeApart(exhi.end).year;
+    // }
 
     var date = takeTimeApart(resume.video.date);
     resume.video.date = date.day + "/" + date.month + "/" + date.year;
@@ -30,7 +30,7 @@ function setResumeAttributes(resume) {
         if(comment.user.verified){
             comment.user.v_image = comment.user.v_type == 1 ? 'img/v_yellow_big.png' : 'img/v_blue_big.png';
         }
-    }v 
+    }
 
     var artists = resume.artists.users;
     for(i = 0; i < artists.length; i++){
@@ -48,7 +48,7 @@ $(function() {
     var vm = new Vue({
         el: 'body',
         data: {
-            resume: {profile:{}, experiences: [], artworks: [], artwork_groups: [], video: {}}
+            resume: {profile:{}, experiences: [], artworks: [], artwork_groups: [], video: {}, artists:{users:[]}}
         },
         ready:function() {
             $.ajax( {

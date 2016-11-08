@@ -121,3 +121,10 @@ function getDateDiff(dateTime){
     return result;
 }
 
+// 显示对话框
+function showModalDialog(){
+    var modalDialog = $(".modal-dialog");
+    modalDialog.css("top", document.body.scrollTop + "px");
+    modalDialog.show();
+}
+

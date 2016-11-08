@@ -41,12 +41,12 @@
             <div class="line"></div>
             <p class="ex-title">个人经历</p>
             <ul class="ex-wrapper">
-                <li v-for="p in resume.experiences.personal">{{p.start}}{{p.end}}{{p.content}}</li>
+                <li v-for="p in resume.experiences.personal">{{p.content}}</li>
             </ul>
             <div class="line"></div>
             <p class="ex-title">参加展览</p>
             <ul class="ex-wrapper">
-                <li v-for="ex in resume.experiences.exhibition">{{ex.start}} - {{ex.end}}{{ex.content}}</li>
+                <li v-for="ex in resume.experiences.exhibition">{{ex.content}}</li>
             </ul>
         </div>
 
