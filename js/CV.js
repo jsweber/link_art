@@ -70,8 +70,5 @@ $(function() {
 
         }
     });
-    var width = $(".video-wrapper").width();
-    console.log(width);
-    $(".video-wrapper").height($(".video-wrapper").width() * 9 / 16 + "px");
 
 });
