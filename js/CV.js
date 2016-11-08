@@ -41,7 +41,7 @@ $(function() {
     var vm = new Vue({
         el: 'body',
         data: {
-            resume: {profile:{}, experiences: [], artworks: [], artwork_groups: [], video: {}}
+            resume: {profile:{}, experiences: [], artworks: [], artwork_groups: [], video: {}, artists:{users:[]}}
         },
         ready:function() {
             $.ajax( {

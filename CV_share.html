@@ -18,7 +18,13 @@
     <!-- 开发完成后请使用min版 -->
     <script src="js/vue.js"></script>
 </head>
-<body class="container ">
+
+<body class="container">
+
+<div class="modal-dialog" onclick="$(this).hide()">
+    <img class="dialog-img" src="img/dialog_img.png" >
+</div>
+
 <section class="cv">
     <section class="sec-wrapper">
         <header class="page-header">
@@ -135,7 +141,7 @@
     </div>
 
     <section class="sec-wrapper">
-        <a href="javascript:alert('请下载并打开LinkArt应用进行操作！')" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+        <a href="javascript:showModalDialog()" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
         <footer class="page-footer">
             <img src="img/qrcode.jpg" class="qrcode">
             <p class="compay-name">LinkArt</p>

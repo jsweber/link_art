@@ -19,6 +19,11 @@
     <script src="js/vue.js"></script>
 </head>
 <body class="container">
+
+<div class="modal-dialog" onclick="$(this).hide()">
+    <img class="dialog-img" src="" >
+</div>
+
 <section class="sound">
     <header class="page-header">
         <img src="img/logo.png" class="logo">
@@ -81,9 +86,9 @@
                             <img v-if="certain_comment.comment.user.verified" v-bind:src="certain_comment.comment.user.v_image" class="v-big-man">
                             <span class="comment-user-name">{{certain_comment.comment.user.name}}<br/><span class="share-date">{{certain_comment.comment.created_at}}</span></span>
                             <div class="comment-time">
-                                <a href="javascript:alert('请下载并打开LinkArt应用进行操作！')"><img src="img/unknow_icon.png"><span>{{certain_comment.comment.recommend_count}}</span></a>
-                                <a href="javascript:alert('请下载并打开LinkArt应用进行操作！')"><img src="img/heart_icon.png"><span>{{certain_comment.comment.favorite_count}}</span></a>
-                                <a href="javascript:alert('请下载并打开LinkArt应用进行操作！')"><img src="img/message_icon.png"><span>{{certain_comment.comment.reply_count}}</span></a>
+                                <a href="javascript:showModalDialog()"><img src="img/unknow_icon.png"><span>{{certain_comment.comment.recommend_count}}</span></a>
+                                <a href="javascript:showModalDialog()"><img src="img/heart_icon.png"><span>{{certain_comment.comment.favorite_count}}</span></a>
+                                <a href="javascript:showModalDialog()"><img src="img/message_icon.png"><span>{{certain_comment.comment.reply_count}}</span></a>
                             </div>
                         </div>
 
@@ -112,7 +117,7 @@
                         <div class="comment-text">{{reply.content}}</div>
                     </li>
                 </ul>
-                <a href="javascript:alert('请下载并打开LinkArt应用进行操作！')" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+                <a href="javascript:showModalDialog()" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
             </li>
         </ul>
     </div>
