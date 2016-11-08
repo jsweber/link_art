@@ -19,6 +19,11 @@
     <script src="js/vue.js"></script>
 </head>
 <body class="container">
+
+<div class="modal-dialog" onclick="$(this).hide()">
+    <img class="dialog-img" src="" >
+</div>
+
 <section class="activity">
     <header class="page-header">
         <img src="img/logo.png" class="logo">
@@ -74,7 +79,35 @@
                 <div class="text-content">
                     {{activity.condition}}
                 </div>
-                <a href="javascript:;" class="signup">报名</a>
+                <a href="javascript:showModalDialog()" class="signup">报名</a>
+            </li>
+
+            <li class="details-slider">
+                <div class="slider-title">参展艺术家 </div>
+                <div class="artists-count">233名</div>
+                <div class="line"></div>
+                <div class="artist-list">
+                    <img src="img/artist_1.png" alt="" class="artist-image">
+                    <img src="img/artist_2.png" alt="" class="artist-image">
+                    <img src="img/artist_3.png" alt="" class="artist-image">
+                    <img src="img/artist_next.png" class="artist-image" onclick="showModalDialog()">
+                </div>
+            </li>
+
+            <li class="details-slider">
+                <div class="slider-title">参展作品</div>
+                <div class="artwork-count ">233幅</div>
+                <div class="line"></div>
+                <div class="artwork-list clearfix">
+                    <img src="img/artwork_1.png" alt="" class="artwork-image">
+                    <img src="img/artwork_2.png" alt="" class="artwork-image">
+                    <img src="img/artwork_3.png" alt="" class="artwork-image">
+                    <img src="img/artwork_4.png" alt="" class="artwork-image">
+                    <img src="img/artwork_5.png" alt="" class="artwork-image">
+                    <img src="img/artwork_6.png" alt="" class="artwork-image">
+                    <img src="img/artwork_7.png" alt="" class="artwork-image">
+                    <img src="img/artwork_next.png" alt="" class="artwork-image" onclick="showModalDialog()">
+                </div>
             </li>
 
             <li class="details-slider">
@@ -107,7 +140,7 @@
                     </li>
 
                 </ul>
-                <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+                <a href="javascript:showModalDialog()" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
             </li>
         </ul>
     </div>

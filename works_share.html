@@ -19,6 +19,11 @@
     <script src="js/vue.js"></script>
 </head>
 <body class="container">
+
+<div class="modal-dialog" onclick="$(this).hide()">
+    <img class="dialog-img" src="" >
+</div>
+
 <section class="works">
     <header class="page-header">
         <img src="img/logo.png" class="logo">
@@ -34,7 +39,7 @@
 
     <div class="page-body">
         <div>
-            <img v-for="picture in work.pictures" v-bind:src="picture.url" class="act-poster">
+            <a href="picture_share.html"><img v-for="picture in work.pictures" v-bind:src="picture.url" class="act-poster"></a>
         </div>
 
         <ul class="details-wrapper">
@@ -81,9 +86,9 @@
                             <img src="img/v_yellow_big.png" class="v-big-man">
                             <span class="comment-user-name">{{comment.user.name}}<br/><span class="share-date">{{comment.time}}</span></span>
                             <div class="comment-time">
-                                <img src="img/unknow_icon.png"><span>1222</span>
-                                <img src="img/heart_icon.png"><span>1222</span>
-                                <img src="img/message_icon.png"><span>122</span>
+                                <a href="javascript:showModalDialog()"><img src="img/unknow_icon.png"><span>{{comment.recommend_count}}</span></a>
+                                <a href="javascript:showModalDialog()"><img src="img/heart_icon.png"><span>{{comment.favorite_count}}</span></a>
+                                <a href="javascript:showModalDialog()"><img src="img/message_icon.png"><span>{{comment.reply_count}}</span></a>
                             </div>
                         </div>
 
@@ -104,9 +109,8 @@
                         <div class="comment-line"></div>
                     </li>
 
-
                 </ul>
-                <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+                <a href="javascript:showModalDialog()" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
             </li>
         </ul>
     </div>

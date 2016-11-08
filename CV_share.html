@@ -19,6 +19,11 @@
     <script src="js/vue.js"></script>
 </head>
 <body class="container">
+
+<div class="modal-dialog" onclick="$(this).hide()">
+    <img class="dialog-img" src="" >
+</div>
+
 <section class="cv">
     <section class="sec-wrapper">
         <header class="page-header">
@@ -85,7 +90,8 @@
                 <ul class="pic-wrapper clearfix">
                     <li v-for="artwork in artwork_group.artworks">
                         <div class="img-parcel">
-                            <img v-bind:src="artwork.image">
+                            <a href="works_share.html"><img v-bind:src="artwork.image"></a>
+
                         </div>
                         <h4 class="img-num text-center">
                             <div class="work-title-wrapper">{{artwork.title}}</div>
@@ -134,7 +140,7 @@
     </div>
 
     <section class="sec-wrapper">
-        <a href="javascript:;" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+        <a href="javascript:showModalDialog()" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
         <footer class="page-footer">
             <img src="img/qrcode.jpg" class="qrcode">
             <p class="compay-name">LinkArt</p>

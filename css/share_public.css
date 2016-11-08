@@ -23,7 +23,7 @@
 .act-poster{display: block;width:100%;}
 
 .details-wrapper{width:100%;}
-.details-wrapper .details-slider{margin-top:1rem;}
+.details-wrapper .details-slider{margin-top:1rem;position: relative;}
 .details-slider .slider-title{height:1.2rem;-webkit-box-sizing: border-box;box-sizing: border-box;border-left:0.2rem solid #fcdc46;font-size: 0.8rem;text-indent: 0.5rem;line-height: 1.2rem;}
 .one-info{height:1.1rem;}
 .one-info .info-title,.one-info .info-content{font-size:0.56rem;line-height: 1.1rem;}
