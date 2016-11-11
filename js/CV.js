@@ -64,10 +64,36 @@ $(function() {
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log(errorThrown);
-//                        alert("异常！");
                 }
             });
 
         }
     });
-})
+
+    scrollTo("html")
+});
+
+function scrollTo(ele){
+    $("html,body").stop(true);
+    $("html,body").animate(
+        {scrollTop: $(ele).offset().top}, 1000
+    );
+}
+
+function changeNavTab(id){
+    var idList = ["profile", "cv-experience", "work-list", "pic-list", "video-part", "describle-list", "other-work-list"];
+    for(var i = 0; i < idList.length; i++){
+        var item = idList[i];
+        var element = $("#" + item);
+        if(id == item){
+            element.removeClass("unselected");
+            element.addClass("selected");
+        }else{
+            element.removeClass("selected");
+            element.addClass("unselected");
+        }
+    }
+
+    scrollTo("." + id);
+
+}

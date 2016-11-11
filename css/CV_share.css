@@ -77,4 +77,30 @@
 
 .text-center{text-align: center;}
 
+.side-nav-bar{
+    position: fixed;width: 1.92rem;height: auto;z-index: 10;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+.item-box{
+    height: 1.45rem;
+    margin-top: 0.189rem;
+}
+
+.item-box > img{
+    width: 1.3rem;
+    height: 1.3rem;
+    margin: 0.1rem auto 0 auto;
+}
+
+.selected{
+    background: #eaca2a;
+}
+.unselected{
+    background: rgba(0,0,0,0);
+}
+
 

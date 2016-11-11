@@ -26,13 +26,53 @@
 
 <section class="cv">
     <section class="sec-wrapper">
-        <header class="page-header">
-            <img src="img/logo.png" class="logo">
-        </header>
+        <!--<header class="page-header">-->
+            <!--&lt;!&ndash;<img src="img/logo.png" class="logo">&ndash;&gt;-->
+        <!--</header>-->
     </section>
 
+    <div class="side-nav-bar">
+        <ul>
+            <li>
+                <div class="item-box selected" id="profile" onclick="changeNavTab(this.id)">
+                    <img src="img/profile_black.png">
+                </div>
+            </li>
+            <li>
+                <div class="item-box unselected" id="cv-experience" onclick="changeNavTab(this.id)">
+                    <img src="img/cv-experience_white.png">
+                </div>
+            </li>
+            <li>
+                <div class="item-box unselected" id="work-list" onclick="changeNavTab(this.id)">
+                    <img src="img/work-list_white.png">
+                </div>
+            </li>
+            <li>
+                <div class="item-box unselected" id="pic-list" onclick="changeNavTab(this.id)">
+                    <img src="img/pic-list_white.png">
+                </div>
+            </li>
+            <li>
+                <div class="item-box unselected" id="video-part" onclick="changeNavTab(this.id)">
+                    <img src="img/video-part_white.png">
+                </div>
+            </li>
+            <li>
+                <div class="item-box unselected" id="describle-list" onclick="changeNavTab(this.id)">
+                    <img src="img/group-65.png">
+                </div>
+            </li>
+            <li>
+                <div class="item-box unselected" id="other-work-list" onclick="changeNavTab(this.id)">
+                    <img src="img/group-66.png">
+                </div>
+            </li>
+        </ul>
+    </div>
+
     <div class="page-body">
-        <div class="row">
+        <div class="row profile">
             <img src="img/cv_author.jpg">
             <div class="cv-describ">
                 <strong class="name">{{resume.profile.name}}</strong><span class="place">{{resume.profile.address}}</span><br/>
