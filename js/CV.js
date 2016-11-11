@@ -70,6 +70,7 @@ $(function() {
         }
     });
 
+
     scrollTo("html")
 });
 
@@ -97,3 +98,4 @@ function changeNavTab(id){
     scrollTo("." + id);
 
 }
+

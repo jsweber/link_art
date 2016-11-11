@@ -18,10 +18,11 @@
     <!-- 开发完成后请使用min版 -->
     <script src="js/vue.js"></script>
 </head>
+
 <body class="container">
 
 <div class="modal-dialog" onclick="$(this).hide()">
-    <img class="dialog-img" src="" >
+    <img class="dialog-img" src="img/dialog_img.png" >
 </div>
 
 <section class="cv">
@@ -144,7 +145,7 @@
         
         <div class="work-row video-part">
             <div class="video-wrapper">
-                <video controls="controls" v-bind:src="resume.video.url"></video>
+                <video class="video" controls="controls" v-bind:src="resume.video.url"></video>
             </div>
             <p><span>{{resume.video.title}}</span><br><span>摄于{{resume.video.date}}</span></p>
         </div>
