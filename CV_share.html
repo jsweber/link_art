@@ -34,12 +34,12 @@
 
     <div class="side-nav-bar">
         <ul>
-            <li>
+            <li v-if="resume.profile != undefined">
                 <div class="item-box selected" id="profile" onclick="changeNavTab(this.id)">
                     <img src="img/profile_black.png">
                 </div>
             </li>
-            <li>
+            <li v-if="resume.profile != undefined">
                 <div class="item-box unselected" id="cv-experience" onclick="changeNavTab(this.id)">
                     <img src="img/cv-experience_white.png">
                 </div>
@@ -61,12 +61,12 @@
             </li>
             <li>
                 <div class="item-box unselected" id="describle-list" onclick="changeNavTab(this.id)">
-                    <img src="img/group-65.png">
+                    <img src="img/describle-list_white.png">
                 </div>
             </li>
             <li>
                 <div class="item-box unselected" id="other-work-list" onclick="changeNavTab(this.id)">
-                    <img src="img/group-66.png">
+                    <img src="img/other-work-list_white.png">
                 </div>
             </li>
         </ul>
@@ -142,6 +142,7 @@
             </div>
 
         </div>
+
         
         <div class="work-row video-part">
             <div class="video-wrapper">
@@ -155,8 +156,8 @@
         </p>
 
         <!--带自我描述的图片-->
-        <ul class="describle-list work-row">
-            <li v-for="image in resume.images">
+        <ul class="describle-list work-row" v-for="objects in resume.images[0].objects">
+            <li v-for="image in objects">
                 <img v-bind:src="image.image">
                 <div class="cv-describ">
                     <span>{{image.title}}</span>
@@ -164,11 +165,12 @@
                 </div>
             </li>
         </ul>
-        
-        <div v-for="show in resume.show" class="author-img-word row">
-            <img v-bind:src="show.image" alt="">
-            <p class="author-word">{{show.content}}</p>
-        </div>
+        <ul class="describle-list work-row" v-for="image in resume.images[1].objects">
+            <li>
+                <img v-bind:src="image.image" alt="">
+                <p class="author-word">{{image.content}}</p>
+            </li>
+        </ul>
 
         <ul class="other-work-list">
             <li v-for="news in resume.news">
@@ -181,12 +183,15 @@
     </div>
 
     <section class="sec-wrapper">
-        <a href="javascript:showModalDialog()" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
         <footer class="page-footer">
             <img src="img/qrcode.jpg" class="qrcode">
             <p class="compay-name">LinkArt</p>
             <p class="focus-text">扫一扫或长按二维码，加关注</p>
         </footer>
+
+        <a href="javascript:showModalDialog()" class="get-all-comment-btn">打开LinkArt，查看全都6条评论</a>
+        <div class="fill-in"></div>
+
     </section>
 
 </section>

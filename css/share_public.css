@@ -47,7 +47,7 @@
 .comment-text{-webkit-box-sizing: border-box;box-sizing: border-box;width:100%;padding:0 2rem 0 2.3rem;line-height: 1rem;font-size:0.6rem;text-align: left;}
 .comment-reply{}
 .reply-user{color:#7492c3;}
-.sound-comment{height:1.8rem;width:12rem;background:url(../img/comment_bg.png) no-repeat;background-size:100% 100%;margin:0.5rem 0 0rem 0;position: relative;}
+.sound-comment{height:1.8rem;width:12rem;background:url(../img/comment_bg.png) no-repeat;background-size:100% 100%;margin:0.5rem 0 0 0;position: relative;}
 .sound-sign{width:6rem;height:100%;float:right;}
 .sound-sign .sound-time{width:3rem;height:100%;display: inline-block;line-height: 1.8rem;text-align: right;overflow: hidden;}
 .sound-sign .sound-img{display:inline-block;width:2rem;height:100%;position: relative;overflow: hidden;line-height: 2.2rem;}
