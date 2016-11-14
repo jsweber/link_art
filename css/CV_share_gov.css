@@ -15,13 +15,13 @@
 .cv-describ .job{padding-right:0.2rem;}
 .cv-describ .describle{color:#dadada;margin-top:0.2rem;font-size: 0.6rem;}
 
-.cv-experience{margin-top:3rem;margin-left: 0.5rem;width:12rem;}
+.cv-experience{margin-top:1.2rem;margin-left: 0.5rem;width:12rem;}
 .cv-experience .ex-name{font-size:1rem;margin-bottom:1rem;}
 .ex-title{font-size:0.7rem;font-weight: bold;margin-top:1rem;margin-bottom:0.8rem;}
 .ex-wrapper{margin-bottom:0.8rem;}
 .ex-wrapper li{line-height: 1rem;}
 
-.work-list{width:100%;margin-top:5rem;}
+.work-list{width:100%;margin-top:1.2rem;}
 .work-list li{width:100%;}
 .work-info-wrapper{margin-bottom:5rem;}
 .work-name{margin-top:1rem;margin-bottom:0.8rem;}
@@ -32,7 +32,7 @@
 .cv .comment-text{padding:0 1.3rem 0 2.7rem;margin-top:0.6rem;}
 .cv .sound-comment{background: url(../img/comment_bg_white.png) no-repeat;background-size: 100% 100%;}
 
-.pic-list{width:100%;}
+.pic-list{width:100%;margin-top: 1.3rem}
 .pic-list-explain{line-height: 1rem;margin:1rem 0;}
 .artist-list{width:100%;}
 .artist-list li{width:4.2rem;float:left;margin-bottom:0.6rem;margin-left:0.7rem;position:relative;}
@@ -42,16 +42,15 @@
 .artist-list li .artist-name{width:4.2rem;height:1rem;text-align:center;margin-top:0.3rem;position: relative;}
 .artist-list li .artist-name .dai{display:inline-block;color:#eaca2a;background:#000;width:0.768rem;height:0.768rem;position: absolute;right:0.5rem;top:0rem;}
 
-
-.video-part{margin-top:5rem;}
-.video-wrapper{width:100%;height:9.6rem;overflow: hidden;position: relative;}
-.video-wrapper video{width:100%;}
+.video-part{margin-top:1.2rem;}
+.video-wrapper{width:100%;height:9.6rem;overflow: hidden;position: relative;background: black}
+.video-wrapper video{width: 100%;height: 100%}
 .video-wrapper img{width:100%;height:100%;position: absolute;top:0;left:0;}
-.video-part p{margin-top:0.5rem;}
+.video-part p{margin-top:0.5rem;line-height: 190%}
 .video-part p span:nth-of-type(1){font-size:0.7rem;}
 .poet{margin-top:1rem;line-height:1rem;padding:0 0.3rem;}
 
-.describle-list{margin-top:7rem;}
+.describle-list{margin-top:1.2rem;}
 .describle-list li{position: relative;margin-bottom:0.5rem;}
 .describle-list .cv-describ{bottom:0.5rem;}
 .describle-list .cv-describ span{padding-right:0.5rem;font-size:0.8rem;}
@@ -61,7 +60,7 @@
 .author-img-word img{display:block;width:100%;margin-top:3rem;position: relative;}
 .author-word{position: absolute;bottom:6%;left:0;width:100%;color:#fff;text-align: center;font-size:0.7rem;line-height: 1rem;}
 
-.other-work-list{width:100%;margin-top:3rem;}
+.other-work-list{width:100%;margin-top:1.2rem;}
 .other-work-list li{padding-bottom:0.3rem;border-bottom:1px solid #9b9995;margin-bottom:0.3rem;}
 .other-work-list li a{width:100%;height:3rem;}
 .other-text{-webkit-box-sizing: border-box;box-sizing: border-box;float:left;width:8rem;line-height: 1rem;height:3rem;color:#fff;font-size:0.6rem;padding-top:0.5rem;}

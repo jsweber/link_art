@@ -85,6 +85,9 @@ $(function() {
                             new AudioPlay(ap);
                         });
 
+                        var videoWrapper = $(".video-wrapper");
+                        videoWrapper.css("height", videoWrapper.width() * 9.0 / 16.0 + "px");
+
                         onDocumentScroll();
                         scrollTo("html");
                     });
@@ -106,7 +109,7 @@ function scrollTo(ele){
     $("html,body").stop(true);
     $(document).unbind('scroll');
     $("html,body").animate(
-        {scrollTop: $(ele).offset().top}, 1000, function(){ setOnDocumentScrollEvent(); }
+        {scrollTop: $(ele).offset().top - parseFloat($(ele).css("margin-top"))}, 1000, function(){ setOnDocumentScrollEvent(); }
     );
 }
 
@@ -122,7 +125,6 @@ function changeSideNavTab(id){
             element.removeClass("selected");
             element.addClass("unselected");
             element.find("img").attr("src", "img/" + item + "_white.png");
-
         }
     }
 }
@@ -133,25 +135,22 @@ function changeNavTab(id){
 }
 
 function setOnDocumentScrollEvent(){
-    $(document).on("scroll",function(e){
-        console.log(document.body.scrollTop);
+    $(document).on("scroll",function(){
         var scrollTop = document.body.scrollTop;
         var id = inWhichArea(scrollTop, offsetTopList, idList);
         changeSideNavTab(id);
-        console.log(id);
-
     })
 }
 
 function onDocumentScroll(){
-
     for(var i = 0; i < idList.length; i++){
-        offsetTopList.push($("." + idList[i]).offset().top);
+        var ele = $("." + idList[i]);
+        var offsetTop = ele.offset().top - parseFloat(ele.css("margin-top"));
+        offsetTopList.push(offsetTop);
     }
     offsetTopList = offsetTopList.sort(function(a,b){return b - a});
 
     setOnDocumentScrollEvent();
-
 }
 
 function inWhichArea(scrollTop){
