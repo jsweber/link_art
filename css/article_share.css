@@ -1,5 +1,5 @@
 .article .get-all-comment-btn{margin-top:1rem;}
 .article-content li{margin-top:0.6rem;}
 .article-content li .article-img{width:100%;display: block;}
-.article-content li .article-text{width:100%;margin-top:0.6rem;}
+.article-content li .article-text{width:100%;margin-top:0.6rem;text-align: justify;letter-spacing: 1px;}
 .cover{width:100%;height: auto;margin-top: 0.9rem;margin-bottom: 0.38rem; }
