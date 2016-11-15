@@ -102,7 +102,7 @@ function scrollTo(ele){
     $("html,body").stop(true);
     $(document).unbind('scroll');
     $("html,body").animate(
-        {scrollTop: $(ele).offset().top - parseFloat($(ele).css("margin-top"))}, 1000, function(){ setOnDocumentScrollEvent(); }
+        {scrollTop: $(ele).offset().top - parseFloat($(ele).css("margin-top"))}, 1000, function(){ setTimeout(setOnDocumentScrollEvent, 500) }
     );
 }
 
