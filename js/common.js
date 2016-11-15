@@ -125,6 +125,16 @@ function getDateDiff(dateTime){
 function showModalDialog(){
     var modalDialog = $(".modal-dialog");
     modalDialog.css("top", document.body.scrollTop + "px");
+    $("body").attr("onmousewheel", "return false;");
+    modalDialog.bind("touchmove",function(event) { event.preventDefault(); }, false);
     modalDialog.show();
+}
+
+// 关闭对话框
+function closeModalDialog(){
+    var modalDialog = $(".modal-dialog");
+    $("body").attr("onmousewheel", "return true;");
+    modalDialog.unbind("touchmove");
+    modalDialog.hide();
 }
 

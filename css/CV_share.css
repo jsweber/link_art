@@ -32,7 +32,7 @@
 .cv .comment-text{padding:0 1.3rem 0 2.7rem;margin-top:0.6rem;}
 .cv .sound-comment{background: url(../img/comment_bg_white.png) no-repeat;background-size: 100% 100%;}
 
-.pic-list{width:100%;}
+.pic-list{width:100%;margin-top:0.1rem;}
 .pic-list-explain{line-height: 1rem;margin:1rem 0;}
 .pic-wrapper{width:100%;}
 .pic-wrapper li{width:7.55rem;float:left;margin-bottom:1rem;}

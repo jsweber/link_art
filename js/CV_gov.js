@@ -45,6 +45,7 @@ function setResumeAttributes(resume) {
 
 var idList = [];
 var offsetTopList = [];
+var offsetTopDict = {};
 
 $(function() {
 
@@ -147,6 +148,7 @@ function onDocumentScroll(){
         var ele = $("." + idList[i]);
         var offsetTop = ele.offset().top - parseFloat(ele.css("margin-top"));
         offsetTopList.push(offsetTop);
+        offsetTopDict[offsetTop] = idList[i];
     }
     offsetTopList = offsetTopList.sort(function(a,b){return b - a});
 
@@ -155,7 +157,7 @@ function onDocumentScroll(){
 
 function inWhichArea(scrollTop){
     for(var i = 0; i < offsetTopList.length; i++)
-        if(scrollTop >= (offsetTopList[i] - 5))  break;
+        if(scrollTop >= offsetTopList[i] - 5)  break;
 
-    return idList[idList.length - i - 1];
+    return offsetTopDict[offsetTopList[i]];
 }
