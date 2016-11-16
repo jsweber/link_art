@@ -73,7 +73,7 @@
     </div>
 
     <div class="page-body">
-        <div class="row profile">
+        <div class="row profile" v-if="resume.profile != undefined">
             <img src="img/cv_author.jpg">
             <div class="cv-describ">
                 <strong class="name">{{resume.profile.name}}</strong><span class="place">{{resume.profile.address}}</span><br/>
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div class="cv-experience">
+        <div class="cv-experience" v-if="resume.experiences != undefined">
             <p class="ex-name">CouCou</p>
             <div class="line"></div>
             <p class="ex-title">个人经历</p>
@@ -96,7 +96,7 @@
             </ul>
         </div>
 
-        <ul class="work-list">
+        <ul class="work-list" v-if="resume.artworks != undefined">
             <li v-for="artwork in resume.artworks" class="work-info-wrapper comment-wrapper">
                 <div class="row text-center"><div class="work-title-wrapper">{{artwork.author}}</div></div>
                 <div class="row text-center work-name">{{artwork.title}}</div>
@@ -125,7 +125,7 @@
         </ul>
 
         <!-- 艺术家 -->
-        <div class="pic-list">
+        <div class="pic-list" v-if="resume.artists != undefined">
             <div class="text-center font-big7">艺术家</div>
             <div class="pic-list-explain">{{resume.artists.note}}</div>
             <div class="work-row">
@@ -145,7 +145,7 @@
 
         </div>
 
-        <div class="work-row video-part">
+        <div class="work-row video-part" v-if="resume.video != undefined">
             <div class="video-wrapper">
                 <video controls="controls" v-bind:src="resume.video.url"></video>
             </div>
@@ -157,7 +157,7 @@
         </p>
 
         <!--带自我描述的图片-->
-        <ul class="describle-list work-row" v-for="objects in resume.images[0].objects">
+        <ul class="describle-list work-row" v-for="objects in resume.images[0].objects" v-if="resume.images != undefined">
             <li v-for="image in objects">
                 <img v-bind:src="image.image">
                 <div class="cv-describ">
@@ -166,14 +166,14 @@
                 </div>
             </li>
         </ul>
-        <ul class="describle-list work-row" v-for="image in resume.images[1].objects">
+        <ul class="describle-list work-row" v-for="image in resume.images[1].objects" v-if="resume.images != undefined">
             <li>
                 <img v-bind:src="image.image" alt="">
                 <p class="author-word">{{image.content}}</p>
             </li>
         </ul>
 
-        <ul class="other-work-list">
+        <ul class="other-work-list" v-if="resume.news != undefined">
             <li v-for="news in resume.news">
                 <a href="{{news.url}}">
                     <span class="other-text">{{news.title}}</span>
