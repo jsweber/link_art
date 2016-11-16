@@ -82,7 +82,7 @@ $(function() {
                         var videoWrapper = $(".video-wrapper");
                         videoWrapper.css("height", videoWrapper.width() * 9.0 / 16.0 + "px");
 
-                        onDocumentScroll();
+                        setTimeout(onDocumentScroll, 500);
                         scrollTo("html");
                     });
                 },
@@ -130,7 +130,7 @@ function changeNavTab(id){
 function setOnDocumentScrollEvent(){
     $(document).on("scroll",function(){
         var scrollTop = document.body.scrollTop;
-        var id = inWhichArea(scrollTop, offsetTopList, idList);
+        var id = inWhichArea(scrollTop);
         changeSideNavTab(id);
     })
 }
