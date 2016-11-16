@@ -74,7 +74,7 @@
 /*作品包裹效果*/
 .work-title-wrapper{height:1rem;padding:0 0.32rem;position: relative;display: inline-block;line-height: 1rem;margin-top:0.7rem;font-size:0.7rem;color:#fff;font-weight: bold;}
 .work-title-wrapper:before{content:"";width:0.32rem;height:1.28rem;background:url("../img/title_left.png") no-repeat left bottom;background-size:100%;position: absolute;left:0;bottom:0;}
-.work-title-wrapper:after{content:"";width:0.29rem;height:1.28rem;background:url("../img/title_right.png") no-repeat left top;background-size:100%;position: absolute;right:0;top:0;}
+.work-title-wrapper:after{content:"";width:0.32rem;height:1.28rem;background:url("../img/title_right.png") no-repeat left top;background-size:100%;position: absolute;right:0;top:0;}
 
 .text-center{text-align: center;}
 
