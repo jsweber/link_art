@@ -10,11 +10,13 @@ $(function(){
         $scrollBlock = $(".scroll-block"),
         $scrollText = $(".scroll-text"),
         $dob = $(".dob"),
+        $changePageBtn=$(".change-page"),
         pageIndex=0,
         lock=true,
+        isVideoEnd=true;
         PAGEH = win.innerHeight || document.body.offsetHeight,
         asideText=["首页","	艺术家","商业","社群","应用"],
-        scrollTime=300,
+        scrollTime=200,
         easing ="swing"
         ;
 
@@ -41,6 +43,7 @@ $(function(){
 
     var loghandle = function(event, delta) {
         if(lock){
+            videoEnd();
             if (delta > 0){
                 if(pageIndex==0){
                     pageIndex=0;
@@ -58,10 +61,40 @@ $(function(){
             asideScroll(pageIndex);
         }
     };
+//这个往下的按钮
+    $changePageBtn.on("click",function(){
+        videoEnd();
+        if(pageIndex==4) return;
+        pageIndex++;
+        pageScroll(pageIndex);
+        asideScroll(pageIndex);
 
+    });
+
+    $(".left-top-logo").on("click",function(){
+        pageIndex=0;
+        pageScroll(pageIndex);
+        asideScroll(pageIndex);
+    });
+
+    function videoDeal(){
+        var video = $("#video")[0];
+        //当浏览器能开始播放当前缓存时回调，参考http://www.w3school.com.cn/tags/av_event_canplay.asp
+        addEvent(video,"canplay",function(){
+            this.play();
+        });
+        addEvent(video,"error",videoEnd);
+        addEvent(video,"ended",videoEnd);
+    }
     function videoEnd(){
-        $video = $("#video");
-
+        if(isVideoEnd){
+            isVideoEnd = false;
+            var fadeinTime = 1500;
+            $(".video-wrapper").hide();
+            $aslideWrapper.animate({opacity:1},fadeinTime);
+            $('.login-wrapper').animate({opacity:1},fadeinTime);
+            $('.fadein-bg').animate({opacity:1},fadeinTime-300);
+        }
     }
 
     function init(){
@@ -69,9 +102,7 @@ $(function(){
         $slide.css({
             height:PAGEH,
         });
-        doc.querySelector(".video_source").addEventListener("load",function(){
-            console.log(123);
-        },false)
+        videoDeal();
 
     }
     $(document).mousewheel(function(event, delta) {
@@ -80,3 +111,13 @@ $(function(){
 });
 
 //工具函数
+function addEvent(obj,type,fn){
+    if(document.addEventListener){
+        obj.addEventListener(type,fn,false);
+    }else{
+        obj.attached("on"+type,function(e){
+            fn.call(obj,window.event);
+        });
+    }
+}
+
