@@ -126,7 +126,7 @@ function showModalDialog(){
     var modalDialog = $(".modal-dialog");
     modalDialog.css("top", document.body.scrollTop + "px");
     $("body").attr("onmousewheel", "return false;");
-    modalDialog.bind("touchmove",function(event) { event.preventDefault(); }, false);
+    modalDialog.on("touchmove",function(event) { return false; });
     modalDialog.show();
 }
 
@@ -134,7 +134,6 @@ function showModalDialog(){
 function closeModalDialog(){
     var modalDialog = $(".modal-dialog");
     $("body").attr("onmousewheel", "return true;");
-    modalDialog.unbind("touchmove");
     modalDialog.hide();
 }
 

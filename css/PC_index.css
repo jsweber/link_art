@@ -1,0 +1,45 @@
+/*font*/
+@font-face{font-family: Regu;src: url(../img/SourceSansPro-Regular.ttf);}
+@font-face{font-family: light;src: url(../img/SourceSansPro-Light.ttf);}
+
+body,html{height:100%;}
+body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
+.slide-wrapper{width:100%;height:100%;position: absolute;top:0;left:0;overflow:hidden;}
+.slide{position: relative;height:100%;overflow: hidden;}
+
+.slide1{background:url("../img/pc_slide1_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;}
+.video-wrapper,.video-obj,.video-master{position: absolute;top:0;left:0;width:100%;height:100%;}
+.video-master{background:rgba(0,0,0,0.7);}
+.video-obj{width:100%;}
+
+.slide2{background:url("../img/pc_slide2_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;}
+
+.slide3{background:url("../img/pc_slide3_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;}
+
+.slide4{background:url("../img/pc_slide4_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;}
+
+.slide5{background:url("../img/pc_slide5_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;}
+
+.login-wrapper{position:fixed;width:130px;height:24px;top:37px;right:30px;}
+.login-wrapper li{float:left;width:65px;height:24px;line-height: 24px;text-align: center;color:#efd352;}
+
+.logo-master{width:670px;height:390px;position: absolute;top:50%;left:50%;margin-left:-335px;margin-top:-200px;}
+.logo-master p{line-height: 60px;width:100%;position: absolute;bottom:0;left:0;text-align: justify;font-size:40px;letter-spacing: 43px;color:#fff;white-space:nowrap;}
+.logo-master .text-value{padding-left:42px;}
+
+.left-top-logo{width:56px;height:90px;background:url("../img/pc_logo.png") no-repeat;background-size:100%;position: absolute;left:40px;top:40px;}
+
+.aslide-wrapper{width:126px;height:500px;position: fixed;top:280px;right:0px;overflow: hidden;}
+.scroll-text-wrapper{width:100%;height:100%;position: absolute;top:0;left:0;}
+.scroll-text{width:126px;height:70px;overflow: hidden;text-align: center;color:#fff;font-size:24px;padding-top:30px;position:relative;}
+.scroll-text .dob{font-size: 46px;color:#fff;width:100%;position: absolute;bottom:-9px;left:0;text-align: center;}
+.scroll-block{width:100%;height:88px;position: absolute;top:0px;left:0;background:#fcdc46;border-bottom-left-radius: 8px;border-top-left-radius: 8px;line-height: 88px;text-align: center;font-family: Regu;font-weight: bold;}
+
+/*svg*/
+#logo{width:180px;height:285px;margin-left:247px;}
+.cls-1 {fill: none;}
+.cls-2 {opacity: 0.88;}
+.cls-3 {fill: #ffda57;}
+.cls-4 {fill: #fafafa;}
+.cls-5 {fill: #fff;}
+.cls-6 {clip-path: url(#clip-path);}
