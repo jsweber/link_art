@@ -35,7 +35,7 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .scroll-text{width:126px;height:70px;overflow: hidden;text-align: center;color:#fff;font-size:24px;padding-top:30px;position:relative;}
 .scroll-text .dob{font-size: 46px;color:#fff;width:100%;position: absolute;bottom:-9px;left:0;text-align: center;}
 .scroll-block{width:100%;height:88px;position: absolute;top:0px;left:0;background:#fcdc46;border-bottom-left-radius: 8px;border-top-left-radius: 8px;line-height: 88px;text-align: center;font-family: Regu;font-weight: bold;}
-.change-page{position: fixed;width:100px;height:100px;left:50%;margin-left:-50px;bottom:50px;background:#fff;}
+.change-page{position: fixed;width:44px;height:88px;left:50%;margin-left:-22px;bottom:15px;}
 .slide-text-wrapper{width:1064px;height:80px;position: absolute;left:445px;top:397px;color:#fff;}
 .big-title{width:274px;height:80px;border-right:1px solid #fcdc46;font-size:65px;font-family: Regu;display: inline-block;}
 .small-text{display: inline-block;line-height: 40px;padding-left:16px;}
@@ -43,6 +43,13 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .slide3 .big-title{width:400px;}
 .slide4 .slide-text-wrapper{top:402px;left:228px;}
 .slide4 .big-title{width:400px;}
+
+.slide5 .slide-text-wrapper{width:494px;height:666px;left:1174px;top:192px;}
+.slide5 .big-title{text-align: right;border-right:none;width:100%;}
+.slide5 .small-text{text-align: right;width:100%;padding-left:0px;margin-top:44px;line-height: 34px;}
+.qrcode{width:200px;height:200px;display: block;margin-top:40px;margin-left:auto;}
+.app-btn{width:200px;height:50px;display:block;background:url("../img/go_apple_store.png") no-repeat;background-size:100%;margin-top:40px;margin-left:auto;}
+.contant{width:304px;height:38px;position: absolute;right: 47px;bottom:3%;color:#fff;text-align: right;}
 
 .text-yellow{color:#fcdc46;}
 /*svg*/
