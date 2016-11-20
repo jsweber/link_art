@@ -1,6 +1,7 @@
 /*font*/
 @font-face{font-family: Regu;src: url(../img/SourceSansPro-Regular.ttf);}
 @font-face{font-family: light;src: url(../img/SourceSansPro-Light.ttf);}
+@font-face{font-family: effra;src: url(../img/Effra_Light.ttf);}
 
 body,html{height:100%;}
 body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
@@ -36,13 +37,13 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .slide5{background:url("../img/pc_slide5_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;}
 
 .login-wrapper{position:fixed;width:130px;height:24px;top:37px;right:30px;opacity:0;}
-.login-wrapper li{float:left;width:65px;height:24px;line-height: 24px;text-align: center;color:#efd352;}
+.login-wrapper li{float:left;width:50%;height:24px;line-height: 24px;text-align: center;color:#efd352;}
 
 .logo-master{width:670px;height:390px;position: absolute;top:50%;left:50%;margin-left:-335px;margin-top:-200px;}
-.logo-master p{line-height: 60px;width:100%;position: absolute;bottom:0;left:0;text-align: justify;font-size:40px;letter-spacing: 43px;color:#fff;white-space:nowrap;}
+.logo-master p{line-height: 60px;width:100%;position: absolute;bottom:0;left:0;text-align: justify;font-size:40px;letter-spacing:1.2em;color:#fff;white-space:nowrap;}
 .logo-master .text-value{padding-left:42px;}
 
-.left-top-logo{width:56px;height:90px;background:url("../img/pc_logo.png") no-repeat;background-size:100%;position: absolute;left:40px;top:40px;}
+.left-top-logo{width:56px;height:90px;background:url("../img/pc_logo.png") no-repeat;background-size:100%;position: absolute;left:3%;top:5%;cursor: pointer;}
 
 .aslide-wrapper{width:126px;height:500px;position: fixed;top:50%;right:0px;margin-top:-250px;overflow: hidden;opacity: 0;}
 .scroll-text-wrapper{width:100%;height:100%;position: absolute;top:0;left:0;}
@@ -50,7 +51,7 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .scroll-text .dob{font-size: 46px;color:#fff;width:100%;position: absolute;bottom:-9px;left:0;text-align: center;}
 .scroll-block{width:100%;height:88px;position: absolute;top:0px;left:0;background:#fcdc46;border-bottom-left-radius: 8px;border-top-left-radius: 8px;line-height: 88px;text-align: center;font-family: Regu;font-weight: bold;}
 .change-page{position: fixed;width:22px;height:44px;left:50%;margin-left:-11px;bottom:15px;}
-.slide-text-wrapper{width:1064px;height:80px;position: absolute;left:445px;top:397px;color:#fff;}
+.slide-text-wrapper{width:60%;height:80px;position: absolute;left:23.18%;top:36.76%;color:#fff;}
 .big-title{width:274px;height:80px;border-right:1px solid #fcdc46;font-size:65px;font-family: Regu;display: inline-block;}
 .small-text{display: inline-block;line-height: 40px;padding-left:16px;}
 .slide3 .slide-text-wrapper{top:406px;left:224px;}
@@ -58,21 +59,39 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .slide4 .slide-text-wrapper{top:402px;left:228px;}
 .slide4 .big-title{width:400px;}
 
-.slide5 .slide-text-wrapper{width:494px;height:666px;left:1174px;top:192px;}
+.slide5 .slide-text-wrapper{width:494px;height:666px;left:auto;right:13.44%;top:18.15%;}
 .slide5 .big-title{text-align: right;border-right:none;width:100%;}
 .slide5 .small-text{text-align: right;width:100%;padding-left:0px;margin-top:44px;line-height: 34px;}
 .qrcode{width:200px;height:200px;display: block;margin-top:40px;margin-left:auto;}
 .app-btn{width:200px;height:50px;display:block;background:url("../img/go_apple_store.png") no-repeat;background-size:100%;margin-top:40px;margin-left:auto;}
-.contant{width:304px;height:38px;position: absolute;right: 47px;bottom:3%;color:#fff;text-align: right;}
+.contant{width:304px;height:38px;position: absolute;right: 47px;bottom:2.6%;color:#fff;text-align: right;}
+.copy-right{width:28.64%;position: absolute;right:47px;bottom:2%;}
+
+/*用户管理*/
+.user-deal{position: fixed;top:0;left:0;width:100%;height:100%;z-index:10;overflow: hidden;background:rgba(0,0,0,0.9);}
+.user-wrapper{width:420px;height:580px;background:url("../img/user_border_bg.png") no-repeat;background-size:100%;position: absolute;top:50%;left:50%;margin-left:-210px;margin-top:-290px;}
+.user-content{width:362px;height:482px;position: absolute;left:12px;top:12px;color:#9e9e9e;}
+.close{width:30px;height:30px;position: absolute;top:26px;left:26px;cursor: pointer;}
+.prompt-text{line-height: 36px;font-size: 28px;margin-top:60px;text-align: right;width:342px;cursor: pointer;}
+.register-form{position: absolute;top:160px;left:50%;margin-left:-158px;width:316px;}
+.form-slide{width:100%;height:72px;}
+.form-slide label{display: block;width:100%;font-size: 16px;}
+.form-slide .la-row{height:40px;border-bottom:1px solid #9a9a9a;}
+.form-slide .input-text{width:200px;height:40px;line-height:40px;font-size: 24px;color:#fff;float:left;letter-spacing: 1px;font-family: effra;}
+.form-btn{height:40px;line-height: 40px;float:right;color:#fcdc46;font-size:16px;margin-right:4px;}
+.look-btn{width:20px;height:40px;float:right;background:url(../img/look_password_icon.png) no-repeat center center;background-size:100%;margin-right:4px;}
+.self-checkbox-wrapper{width:12px;height:12px;border:1px solid #9a9a9a;position: relative;display: inline-block;vertical-align: text-bottom;}
+.agree-btn{position: absolute;top:0;left:0;width:100%;height:100%;opacity:0;z-index: 10;}
+.yellow-gou{width: 100%;position: absolute;top:2px;left:0;opacity: 0;}
+.agree-btn:checked + .yellow-gou{opacity:1;}
+.xieyi{font-size:12px;line-height: 16px;}
+.xieyi span{text-decoration: underline;font-size:12px;}
+.register-form .submit-wrapper{margin-top:36px;height:26px;}
+.register-form .go-login{font-size:18px;text-decoration: none;line-height: 26px;float:left;font-family: light;}
+.register-form .submit-btn{width:46px;height:24px;background: url(../img/user_submit_btn.png) no-repeat;background-size:100%;float:right;margin-top:2px;}
 
 .text-yellow{color:#fcdc46;}
-@media screen and (min-width:600px) and (max-width:1440px){
-    .aslide-wrapper{-webkit-transform: scale(0.7);transform: scale(0.7);}
-    .logo-master{-webkit-transform: scale(0.7);transform: scale(0.7);}
-    .slide-text-wrapper{-webkit-transform: scale(0.7);transform: scale(0.7);}
-    .left-top-logo{-webkit-transform: scale(0.7);transform: scale(0.7);}
-}
-
+.la-row{width:100%;position: relative;}
 /*svg*/
 #logo{width:180px;height:285px;margin-left:247px;}
 .cls-1 {fill: none;}
@@ -81,5 +100,41 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .cls-4 {fill: #fafafa;}
 .cls-5 {fill: #fff;}
 .cls-6 {clip-path: url(#clip-path);}
+
+@media screen and (min-width:1281px) and (max-width:1600px){
+    body{font-size:15px;}
+    .login-wrapper{width:104px;}
+    .aslide-wrapper{-webkit-transform: scale(0.8);-moz-transform: scale(0.8);-ms-transform: scale(0.8);transform: scale(0.8);right:-14px;font-size:18px;}
+    .scroll-text{font-size:26px;}
+    .logo-master{height:350px;}
+    #logo{width:136px;height:228px;margin-top:30px;margin-left: 256px;}
+    .logo-master p{font-size:32px;text-align: center;}
+    .slide3 .big-title{width:350px;}
+    .slide4 .big-title{width:350px;}
+    .big-title{font-size:56px;height:64px;width:240px;}
+    .small-text{font-size:16px;line-height: 32px;}
+    .slide5 .small-text{margin-top:32px;}
+    .qrcode{width:168px;height:168px;margin-top:32px;}
+    .app-btn{width:160px;height:40px;margin-top:32px;}
+    .left-top-logo{width:44px;height:72px;}
+}
+@media screen and (max-width:1280px){
+    body{font-size:12px;}
+    .login-wrapper{width:84px;}
+    .aslide-wrapper{-webkit-transform: scale(0.64);-moz-transform: scale(0.64);-ms-transform: scale(0.64);transform: scale(0.64);right:-24px;font-size:18px;}
+    .scroll-text{font-size:26px;}
+    .logo-master{height:320px;}
+    #logo{width:108px;height:182px;margin-top:50px;margin-left: 280px;}
+    .logo-master p{font-size:26px;text-align: center;}
+    .slide3 .big-title{width:280px;}
+    .slide4 .big-title{width:280px;}
+    .big-title{font-size:45px;height:52px;width:190px;}
+    .small-text{font-size:14px;line-height: 24px;}
+    .slide5 .small-text{margin-top:26px;}
+    .qrcode{width:128px;height:128px;margin-top:26px;}
+    .app-btn{width:128px;height:32px;margin-top:26px;}
+    .left-top-logo{width:36px;height:58px;}
+}
+
 
 

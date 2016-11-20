@@ -22,6 +22,40 @@ $(function(){
         ;
 
     init();
+
+/*事件绑定*/
+    //这个往下的按钮
+    $changePageBtn.on("click",function(){
+        videoEnd();
+        if(pageIndex==4) return;
+        pageIndex++;
+        pageScroll(pageIndex);
+        asideScroll(pageIndex);
+
+    });
+
+    $(".left-top-logo").on("click",function(){
+        pageIndex=0;
+        pageScroll(pageIndex);
+        asideScroll(pageIndex);
+    });
+
+    $scrollText.on("click",function(){
+        pageIndex=$(this).index();
+        pageScroll(pageIndex);
+        asideScroll(pageIndex);
+    });
+
+    $(".register .close").on("click",function(){
+        $(".register").hide();
+    });
+    //密码查看
+    $(".look-btn").on("click",function(){
+        var $passwd= $(".passwd-text");
+        var type = $passwd.attr("type") =="text"? "password" : "text";
+        $passwd.attr("type",type);
+    });
+/*  交互封装 */
     function pageScroll(index){
         lock=false;
         $wrapper.animate({top:(-PAGEH*pageIndex)+'px'},scrollTime,easing,function(){
@@ -62,26 +96,9 @@ $(function(){
             asideScroll(pageIndex);
         }
     };
-//这个往下的按钮
-    $changePageBtn.on("click",function(){
-        videoEnd();
-        if(pageIndex==4) return;
-        pageIndex++;
-        pageScroll(pageIndex);
-        asideScroll(pageIndex);
 
-    });
-
-    $(".left-top-logo").on("click",function(){
-        pageIndex=0;
-        pageScroll(pageIndex);
-        asideScroll(pageIndex);
-    });
-
-    $scrollText.on("click",function(){
-        pageIndex=$(this).index();
-        pageScroll(pageIndex);
-        asideScroll(pageIndex);
+    $wrapper.mousewheel(function(event, delta) {
+        loghandle(event, delta);
     });
 
     function videoDeal(){
@@ -112,9 +129,6 @@ $(function(){
         videoDeal();
 
     }
-    $(document).mousewheel(function(event, delta) {
-            loghandle(event, delta);
-        });
 });
 
 //工具函数
