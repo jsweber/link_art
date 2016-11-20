@@ -13,10 +13,11 @@ $(function(){
         $changePageBtn=$(".change-page"),
         pageIndex=0,
         lock=true,
-        isVideoEnd=true;
+        isVideoEnd=true,
+        scrollStepDis=100,
+        scrollTime=200,
         PAGEH = win.innerHeight || document.body.offsetHeight,
         asideText=["首页","	艺术家","商业","社群","应用"],
-        scrollTime=200,
         easing ="swing"
         ;
 
@@ -28,7 +29,7 @@ $(function(){
         })
     }
     function asideScroll(index){
-        $scrollBlock.animate({top:(100*pageIndex)+'px'},scrollTime,easing,function(){
+        $scrollBlock.animate({top:(scrollStepDis*pageIndex)+'px'},scrollTime,easing,function(){
             $scrollBlock.html(asideText[index]);
             $dob.css("opacity",1);
             if(index>0){
@@ -73,6 +74,12 @@ $(function(){
 
     $(".left-top-logo").on("click",function(){
         pageIndex=0;
+        pageScroll(pageIndex);
+        asideScroll(pageIndex);
+    });
+
+    $scrollText.on("click",function(){
+        pageIndex=$(this).index();
         pageScroll(pageIndex);
         asideScroll(pageIndex);
     });

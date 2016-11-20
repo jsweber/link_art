@@ -10,8 +10,22 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .slide1{}
 .fadein-bg{background:url("../img/pc_slide1_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;opacity: 0.3;}
 .video-wrapper,.video-obj,.video-master,.fadein-bg{position: absolute;top:0;left:0;width:100%;height:100%;}
+.video-wrapper{background:#000;}
 .video-master{background:rgba(0,0,0,0.3);}
-.video-obj{width:100%;}
+.video-obj{
+    width:100%;
+    position:relative;
+    padding-bottom:56.25%;    /*需要用padding来维持16:9比例,也就是9除以16*/
+    height: 0;
+
+}
+#video{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
 
 .slide2{background:url("../img/pc_slide2_bg.jpg") center center no-repeat;background-size:cover;-webkit-background-size:cover;}
 
@@ -30,12 +44,12 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 
 .left-top-logo{width:56px;height:90px;background:url("../img/pc_logo.png") no-repeat;background-size:100%;position: absolute;left:40px;top:40px;}
 
-.aslide-wrapper{width:126px;height:500px;position: fixed;top:280px;right:0px;overflow: hidden;opacity: 0;}
+.aslide-wrapper{width:126px;height:500px;position: fixed;top:50%;right:0px;margin-top:-250px;overflow: hidden;opacity: 0;}
 .scroll-text-wrapper{width:100%;height:100%;position: absolute;top:0;left:0;}
-.scroll-text{width:126px;height:70px;overflow: hidden;text-align: center;color:#fff;font-size:24px;padding-top:30px;position:relative;}
+.scroll-text{width:126px;height:70px;overflow: hidden;text-align: center;color:#fff;font-size:24px;padding-top:30px;position:relative;cursor: pointer;}
 .scroll-text .dob{font-size: 46px;color:#fff;width:100%;position: absolute;bottom:-9px;left:0;text-align: center;}
 .scroll-block{width:100%;height:88px;position: absolute;top:0px;left:0;background:#fcdc46;border-bottom-left-radius: 8px;border-top-left-radius: 8px;line-height: 88px;text-align: center;font-family: Regu;font-weight: bold;}
-.change-page{position: fixed;width:44px;height:88px;left:50%;margin-left:-22px;bottom:15px;}
+.change-page{position: fixed;width:22px;height:44px;left:50%;margin-left:-11px;bottom:15px;}
 .slide-text-wrapper{width:1064px;height:80px;position: absolute;left:445px;top:397px;color:#fff;}
 .big-title{width:274px;height:80px;border-right:1px solid #fcdc46;font-size:65px;font-family: Regu;display: inline-block;}
 .small-text{display: inline-block;line-height: 40px;padding-left:16px;}
@@ -52,6 +66,13 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .contant{width:304px;height:38px;position: absolute;right: 47px;bottom:3%;color:#fff;text-align: right;}
 
 .text-yellow{color:#fcdc46;}
+@media screen and (min-width:600px) and (max-width:1440px){
+    .aslide-wrapper{-webkit-transform: scale(0.7);transform: scale(0.7);}
+    .logo-master{-webkit-transform: scale(0.7);transform: scale(0.7);}
+    .slide-text-wrapper{-webkit-transform: scale(0.7);transform: scale(0.7);}
+    .left-top-logo{-webkit-transform: scale(0.7);transform: scale(0.7);}
+}
+
 /*svg*/
 #logo{width:180px;height:285px;margin-left:247px;}
 .cls-1 {fill: none;}
@@ -60,3 +81,5 @@ body{font-size:18px;font-family: light;position: relative;overflow: hidden;}
 .cls-4 {fill: #fafafa;}
 .cls-5 {fill: #fff;}
 .cls-6 {clip-path: url(#clip-path);}
+
+
