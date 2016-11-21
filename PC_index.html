@@ -106,8 +106,8 @@
         </section>
 
         <ul class="login-wrapper">
-            <li>登陆</li>
-            <li>注册</li>
+            <li class="land-in-btn">登陆</li>
+            <li class="login-in-btn">注册</li>
         </ul>
 
         <div class="aslide-wrapper">
@@ -170,7 +170,88 @@
             </div>
         </div>
     </section>
+    <section class="download user-deal">
+        <div class="user-wrapper">
+            <div class="user-content">
+                <div class="close"></div>
+                <div class="prompt-text">下载</div>
+                <p class="download-text">扫描下方二维码下载APP完成注册</p>
+                <a href="javascript:;" class="go-to-app-store"></a>
+            </div>
+        </div>
+    </section>
+    <section class="land user-deal">
+        <div class="user-wrapper">
+            <div class="user-content">
+                <div class="close"></div>
+                <div class="prompt-text">登录</div>
 
+                <form action="" class="register-form">
+                    <div class="form-slide">
+                        <label for="land-iphone-number">手机号</label>
+                        <div class="la-row">
+                            <input type="text" maxlength="11" id="land-iphone-number" class="input-text">
+                        </div>
+                    </div>
+
+                    <div class="form-slide">
+                        <label for="input-code">密码</label>
+                        <div class="la-row">
+                            <input type="password" id="input-code" class="input-text passwd-text">
+                            <a href="javascript:;" class="form-btn look-btn"></a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="forget-passwd-btn">忘记密码？</a>
+
+                    <div class="la-row submit-wrapper">
+                        <a href="javascript:;" class="text-yellow go-login">注册</a>
+                        <input type="submit" class="submit-btn" value="">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="fpassword user-deal">
+        <div class="user-wrapper">
+            <div class="user-content">
+                <div class="close"></div>
+                <div class="prompt-text">修改密码</div>
+
+                <form action="" class="register-form">
+                    <div class="form-slide">
+                        <label for="iphone-number">手机号</label>
+                        <div class="la-row">
+                            <input type="text" maxlength="11" id="fpassword-iphone-number" class="input-text">
+                            <a href="javascript:;" class="form-btn get-athe-code">获取验证码</a>
+                            <a href="javascript:;" class="form-btn reget-athe-code"  style="display: none;">重新获取</a>
+                            <div class="show-time"  style="display: none;"><span class="text-yellow">30</span> 秒</div>
+                        </div>
+                    </div>
+
+                    <div class="form-slide">
+                        <label for="auth-code">验证码</label>
+                        <div class="la-row">
+                            <input type="text" id="fpassword-auth-code" class="input-text">
+                        </div>
+                    </div>
+
+                    <div class="form-slide">
+                        <label for="set-code">设置新密码</label>
+                        <div class="la-row">
+                            <input type="password" id="fpassword-set-code" class="input-text passwd-text">
+                            <a href="javascript:;" class="form-btn look-btn"></a>
+                        </div>
+                    </div>
+
+                    <div class="la-row submit-wrapper">
+                        <input type="submit" class="submit-btn" value="">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
 </body>
 <!-- build:js js/pc_index.js -->
 <script src="js/jquery2.1.1.min.js"></script>

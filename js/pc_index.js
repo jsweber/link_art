@@ -46,14 +46,95 @@ $(function(){
         asideScroll(pageIndex);
     });
 
-    $(".register .close").on("click",function(){
-        $(".register").hide();
+    $(".download .close").on("click",function(){
+        $(".download").hide();
     });
+
+    $(".land .close").on("click",function(){
+        $(".land").hide();
+    });
+
+    $(".fpassword .close").on("click",function(){
+        $(".fpassword").hide();
+    });
+
+    $(".login-in-btn").on("click",function(){
+        $(".download").show();
+    });
+
+    $(".land-in-btn").on("click",function(){
+        $(".land").show();
+    });
+
+    $(".land .go-login").on("click",function(){
+        $(".land").hide();
+        $(".download").show();
+    });
+
+    $(".forget-passwd-btn").on("click",function(){
+        $(".land").hide();
+        $(".fpassword").show();
+    });
+
     //密码查看
-    $(".look-btn").on("click",function(){
-        var $passwd= $(".passwd-text");
+    $(".land .look-btn").on("click",function(){
+        var $passwd= $(".land .passwd-text");
+        var selectState = {
+            password:"url(img/close_eye.png)",
+            text:"url(img/look_password_icon.png)"
+        };
         var type = $passwd.attr("type") =="text"? "password" : "text";
         $passwd.attr("type",type);
+        $(this).css("background-image",selectState[type]);
+    });
+    $(".fpassword .look-btn").on("click",function(){
+        var $passwd= $(".fpassword .passwd-text");
+        var selectState = {
+            password:"url(img/close_eye.png)",
+            text:"url(img/look_password_icon.png)"
+        };
+        var type = $passwd.attr("type") =="text"? "password" : "text";
+        $passwd.attr("type",type);
+        $(this).css("background-image",selectState[type]);
+    });
+    //倒计时
+    var time = 30;
+    var $showTime = $(".show-time");
+    var $span = $(".show-time span");
+    $(".fpassword .get-athe-code").on("click",function(){
+        var $this = $(this);
+        $this.hide();
+        var count = time;
+        $showTime.show();
+        var timer = setInterval(function(){
+            if(count<=0){
+                clearInterval(timer);
+                $(".reget-athe-code").show();
+                $showTime.hide();
+                $span.html(30);
+                return;
+            }
+            count--;
+            $span.html(count);
+        },1000);
+    });
+
+    $(".reget-athe-code").on("click",function(){
+        var $this = $(this);
+        $this.hide();
+        var count = time;
+        $showTime.show();
+        var timer = setInterval(function(){
+            if(count<=0){
+                clearInterval(timer);
+                $this.show();
+                $showTime.hide();
+                $span.html(30);
+                return;
+            }
+            count--;
+            $span.html(count);
+        },1000);
     });
 /*  交互封装 */
     function pageScroll(index){
